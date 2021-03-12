@@ -57,12 +57,17 @@
         /obj/item/weapon/reagent_containers/hypospray = 10,
         /obj/item/weapon/storage/firstaid/surgery = 10,
 
+		/obj/item/weapon/reagent_containers/glass/bottle/arena/bruteburn = 20,
+		/obj/item/weapon/reagent_containers/glass/bottle/arena/keloderm = 20,
+		/obj/item/weapon/reagent_containers/glass/bottle/arena/hypersynap = 20,
+		/obj/item/weapon/reagent_containers/glass/bottle/arena/rezaxadon = 20,
+		/obj/item/weapon/reagent_containers/syringe = 20,
+
         /obj/item/clothing/suit/storage/toggle/labcoat = 30,
         /obj/item/clothing/glasses/hud/standard/medical = 30,
         /obj/item/clothing/gloves/latex = 30,
         /obj/item/clothing/gloves/latex/nitrile = 30,
         /obj/item/weapon/storage/belt/medical/emt = 30,
-        /obj/item/weapon/reagent_containers/syringe = 30,
 
         /obj/item/weapon/reagent_containers/glass/bottle/arena/tramadol = 30,
         /obj/item/weapon/reagent_containers/glass/bottle/arena/inaprovaline = 30,
@@ -70,8 +75,12 @@
         /obj/item/weapon/reagent_containers/glass/bottle/arena/dermaline = 30,
         /obj/item/weapon/reagent_containers/glass/bottle/arena/dexalinplus = 30,
         /obj/item/weapon/reagent_containers/glass/bottle/arena/tricordrazine = 30,
-        /obj/item/weapon/reagent_containers/glass/bottle/arena/imidazoline = 30,
         /obj/item/weapon/reagent_containers/glass/bottle/arena/peridaxon = 30,
+		/obj/item/weapon/reagent_containers/glass/bottle/arena/hyperzine = 30,
+		/obj/item/weapon/reagent_containers/glass/bottle/arena/synaptizine = 30,
+
+		/obj/item/stack/medical/advanced/bruise_pack = 50,
+		/obj/item/stack/medical/advanced/ointment = 50,
     )
 
 // 17x6, 32x4, 28x1 = 258
