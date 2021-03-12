@@ -3,7 +3,7 @@ GLOBAL_VAR(spawntypes)
 /proc/spawntypes()
 	if(!GLOB.spawntypes)
 		GLOB.spawntypes = list()
-		for(var/type in typesof(/datum/spawnpoint)-/datum/spawnpoint)
+		for(var/type in typesof(/datum/spawnpoint/arena)-/datum/spawnpoint/arena)
 			var/datum/spawnpoint/S = type
 			var/display_name = initial(S.display_name)
 			if((display_name in GLOB.using_map.allowed_spawns) || initial(S.always_visible))
@@ -17,6 +17,54 @@ GLOBAL_VAR(spawntypes)
 	var/always_visible = FALSE	// Whether this spawn point is always visible in selection, ignoring map-specific settings.
 	var/list/restrict_job = null
 	var/list/disallow_job = null
+
+/datum/spawnpoint/arena
+	var/spawn_count = 1
+	always_visible = TRUE
+
+	command_post
+		display_name = "Command Post"
+	hangar
+		display_name = "Guest Shuttle"
+	hangar_post
+		display_name = "Hangar Post"
+	stash
+		display_name = "Stash"
+
+	left_toilet
+		display_name = "Left Toilet"
+	right_toilet
+		display_name = "Right Toilet"
+
+	first_dorm
+		display_name = "First Dorm"
+	second_dorm
+		display_name = "Second Dorm"
+	third_dorm
+		display_name = "Third Dorm"
+
+	canteen
+		display_name = "Canteen"
+	kitchen
+		display_name = "Kitchen"
+	hall_post
+		display_name = "Hall Post"
+	bar_backroom
+		display_name = "Bar Backroom"
+	storage
+		display_name = "Storage"
+
+	first_pod
+		display_name = "First Pod"
+	second_pod
+		display_name = "Second Pod"
+	third_pod
+		display_name = "Third Pod"
+
+	left_thruster
+		display_name = "Left Thruster"
+	right_thruster
+		display_name = "Right Thruster"
 
 /datum/spawnpoint/proc/check_job_spawning(job)
 	if(restrict_job && !(job in restrict_job))

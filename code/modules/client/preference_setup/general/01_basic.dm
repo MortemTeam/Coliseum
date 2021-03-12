@@ -4,7 +4,7 @@ datum/preferences
 	var/gender = MALE					//gender of character (well duh)
 	var/body = "Default"
 	var/age = 30						//age of character
-	var/spawnpoint = "Default" 			//where this character will spawn (0-2).
+	var/spawnpoint = "Command Post"        			//where this character will spawn (0-2).
 	var/metadata = ""
 
 /datum/category_item/player_setup_item/general/basic

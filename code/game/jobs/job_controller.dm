@@ -462,13 +462,8 @@ var/global/datum/controller/occupations/job_master
 		H.job = rank
 
 		if(!joined_late || job.latejoin_at_spawnpoints)
-			var/obj/S = get_roundstart_spawnpoint(rank)
-
-			if(istype(S, /obj/effect/landmark/start) && istype(S.loc, /turf))
-				H.forceMove(S.loc)
-			else
-				var/datum/spawnpoint/spawnpoint = get_spawnpoint_for(H.client, rank)
-				H.forceMove(pick(spawnpoint.turfs))
+			var/datum/spawnpoint/spawnpoint = get_spawnpoint_for(H.client, rank)
+			H.forceMove(pick(spawnpoint.turfs))
 
 			// Moving wheelchair if they have one
 			if(H.buckled && istype(H.buckled, /obj/structure/bed/chair/wheelchair))
@@ -686,10 +681,10 @@ var/global/datum/controller/occupations/job_master
 
 /datum/controller/occupations/proc/get_roundstart_spawnpoint(rank)
 	var/list/loc_list = list()
-	for(var/obj/effect/landmark/start/sloc in landmarks_list)
-		if(sloc.name != rank)	continue
-		if(locate(/mob/living) in sloc.loc)	continue
-		loc_list += sloc
+	for(var/obj/effect/spawnmaker/SM in landmarks_list)
+		if(SM.name != rank)	continue
+		if(locate(/mob/living) in SM.loc)	continue
+		loc_list += SM
 	if(loc_list.len)
 		return pick(loc_list)
 	else

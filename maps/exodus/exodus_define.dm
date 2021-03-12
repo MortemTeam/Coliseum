@@ -32,6 +32,13 @@
 	shuttle_recall_message = "The scheduled crew transfer has been cancelled."
 
 	evac_controller_type = /datum/evacuation_controller/shuttle
+	allowed_spawns = list(
+		"Command Post", "Guest Shuttle", "Hangar Post", "Stash",
+		"Left Toilet", "Right Toilet",
+		"First Dorm", "Second Dorm", "Third Dorm",
+		"Canteen", "Kitchen", "Hall Post", "Bar Backroom", "Storage",
+		"First Pod", "Second Pod", "Third Pod", "Left Thruster", "Right Thruster",
+	)
 
 /datum/map/exodus/perform_map_generation()
 	new /datum/random_map/automata/cave_system(null, 1, 1, 6, 255, 255) // Create the mining Z-level.
