@@ -45,8 +45,8 @@
     name = "synaptizine bottle"
     reagents_to_fill = list(/datum/reagent/synaptizine = 20)
 
-/obj/item/weapon/reagent_containers/glass/bottle/arena/bruteburn
-    name = "bruteburn bottle"
+/obj/item/weapon/reagent_containers/glass/bottle/arena/kelobic
+    name = "kelobic bottle"
     reagents_to_fill = list(
 		/datum/reagent/kelotane = 7.5,
 		/datum/reagent/bicaridine = 7.5,

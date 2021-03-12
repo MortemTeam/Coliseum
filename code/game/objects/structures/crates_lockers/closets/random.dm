@@ -57,7 +57,7 @@
         /obj/item/weapon/reagent_containers/hypospray = 10,
         /obj/item/weapon/storage/firstaid/surgery = 10,
 
-		/obj/item/weapon/reagent_containers/glass/bottle/arena/bruteburn = 20,
+		/obj/item/weapon/reagent_containers/glass/bottle/arena/kelobic = 20,
 		/obj/item/weapon/reagent_containers/glass/bottle/arena/keloderm = 20,
 		/obj/item/weapon/reagent_containers/glass/bottle/arena/hypersynap = 20,
 		/obj/item/weapon/reagent_containers/glass/bottle/arena/rezaxadon = 20,
