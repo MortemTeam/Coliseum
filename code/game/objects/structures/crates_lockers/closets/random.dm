@@ -86,6 +86,7 @@
         /obj/item/clothing/glasses/hud/standard/material = 10,
         /obj/item/clothing/shoes/syndigaloshes = 10,
         /obj/item/device/chameleon = 10,
+		/obj/item/device/chameleonholo = 10,
         /obj/item/device/flashlight/flashdark = 10,
         /obj/item/weapon/storage/firstaid/combat = 10,
         /obj/item/weapon/defibrillator/compact/combat/loaded = 10,
@@ -106,7 +107,7 @@
         /obj/item/weapon/gun/magnetic/railgun/flechette = 5,
         /obj/item/weapon/gun/magnetic/railgun = 5,
         /obj/item/weapon/gun/projectile/magnum_pistol = 5,
-        /obj/item/clothing/suit/armor/hos/jensen = 5,
+		/obj/item/weapon/gun/projectile/revolver = 5,
 
         /obj/item/weapon/storage/box/smokes = 10,
         /obj/item/weapon/storage/box/frags = 10,
@@ -115,21 +116,21 @@
         /obj/item/weapon/gun/energy/gun = 20,
         /obj/item/weapon/gun/projectile/automatic/c20r = 20,
         /obj/item/weapon/gun/projectile/shotgun/pump/combat = 20,
-        /obj/item/weapon/gun/projectile/revolver = 20,
-        /obj/item/weapon/gun/projectile/colt/officer = 20,
         /obj/item/weapon/gun/projectile/automatic/wt550 = 20,
         /obj/item/weapon/gun/projectile/automatic/machine_pistol/mini_uzi = 20,
 
-        /obj/item/weapon/melee/baton = 30,
-
-        /obj/item/clothing/head/helmet = 30,
         /obj/item/clothing/head/helmet/ablative = 30,
         /obj/item/clothing/head/helmet/ballistic = 30,
-
-        /obj/item/clothing/suit/armor/vest = 30,
-        /obj/item/clothing/suit/armor/laserproof = 30,
+		/obj/item/clothing/suit/armor/laserproof = 30,
         /obj/item/clothing/suit/armor/bulletproof = 30,
-		/obj/item/clothing/glasses/hud/aviators/security = 30,
+
+		/obj/item/weapon/melee/baton = 50,
+		/obj/item/weapon/gun/projectile/colt/officer = 50,
+		/obj/item/weapon/shield/riot = 50,
+		/obj/item/clothing/mask/gas/police = 50,
+        /obj/item/clothing/suit/storage/vest/police = 50,
+		/obj/item/clothing/head/helmet/police = 50,
+		/obj/item/clothing/glasses/hud/aviators/security = 50,
     )
 
 // 28x1 = 28
@@ -140,6 +141,8 @@
     random_list = list(
         /obj/item/weapon/soap = 10,
         /obj/item/clothing/mask/pig = 10,
+		/obj/item/clothing/suit/armor/hos/jensen = 10,
+		/obj/item/clothing/head/HoS/german = 10,
 
         /obj/item/clothing/glasses/sunglasses = 30,
         /obj/item/clothing/head/cowboy_hat = 30,
@@ -161,4 +164,7 @@
         /obj/item/clothing/suit/storage/civ_trench = 30,
         /obj/item/clothing/suit/storage/civ_trench/grey = 30,
         /obj/item/clothing/suit/storage/toggle/leathercoat = 30,
+
+		/obj/item/weapon/tank/emergency/oxygen/double = 50,
+		/obj/item/clothing/mask/gas/clear = 50,
     )
