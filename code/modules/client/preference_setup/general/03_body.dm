@@ -30,7 +30,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	var/has_cortical_stack = FALSE
 	var/equip_preview_mob = EQUIP_PREVIEW_ALL
 
-	var/icon/bgstate = "000"
+	var/icon/bgstate = MATERIAL_STEEL
 	var/list/bgstate_options = list("000", "FFF", MATERIAL_STEEL, "white")
 
 /datum/category_item/player_setup_item/general/body
@@ -137,8 +137,8 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	user << browse_rsc(pref.preview_icon, "previewicon.png")
 
 	var/datum/species/mob_species = all_species[pref.species]
-	. += "<table><tr style='vertical-align:top'><td><b>Body</b> "
-	. += "(<a href='?src=\ref[src];random=1'>&reg;</A>)"
+	. += "<table><tr style='vertical-align:top'><td><b>Body</b>"
+	//. += "(<a href='?src=\ref[src];random=1'>&reg;</A>)"
 	. += "<br>"
 
 	if(config.use_cortical_stacks)
@@ -151,7 +151,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 		. += "<br>"
 
 	. += "Species: <a href='?src=\ref[src];show_species=1'>[pref.species]</a><br>"
-	. += "Blood Type: <a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"
+	//. += "Blood Type: <a href='?src=\ref[src];blood_type=1'>[pref.b_type]</a><br>"
 
 	if(has_flag(mob_species, HAS_BASE_SKIN_COLOURS))
 		. += "Base Colour: <a href='?src=\ref[src];base_skin=1'>[pref.s_base]</a><br>"
@@ -159,10 +159,35 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	if(has_flag(mob_species, HAS_A_SKIN_TONE))
 		. += "Skin Tone: <a href='?src=\ref[src];skin_tone=1'>[-pref.s_tone + 35]/[mob_species.max_skin_tone()]</a><br>"
 
+	. += "<br><b>Hair</b><br>"
+	if(has_flag(mob_species, HAS_HAIR_COLOR))
+		. += "Color: <font face='fixedsys' size='3' color='#[num2hex(pref.r_hair, 2)][num2hex(pref.g_hair, 2)][num2hex(pref.b_hair, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_hair, 2)][num2hex(pref.g_hair, 2)][num2hex(pref.b_hair)]'><tr><td>__</td></tr></table></font> <a href='?src=\ref[src];hair_color=1'>Change Color</a><br>"
+	. += " Style: <a href='?src=\ref[src];hair_style=1'>[pref.h_style]</a><br>"
+	. += " Cycle: <a href='?src=\ref[src];cycle_hair_style=-1'>&#8592;</a><a href='?src=\ref[src];cycle_hair_style=1'>&#8594;</a><br>"
 
-	. += "Needs Glasses: <a href='?src=\ref[src];disabilities=[NEARSIGHTED]'><b>[pref.disabilities & NEARSIGHTED ? "Yes" : "No"]</b></a><br>"
-	. += "Limbs: <a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
-	. += "Internal Organs: <a href='?src=\ref[src];organs=1'>Adjust</a><br>"
+	. += "<br><b>Facial</b><br>"
+	if(has_flag(mob_species, HAS_HAIR_COLOR))
+		. += "Color: <font face='fixedsys' size='3' color='#[num2hex(pref.r_facial, 2)][num2hex(pref.g_facial, 2)][num2hex(pref.b_facial, 2)]'><table  style='display:inline;' bgcolor='#[num2hex(pref.r_facial, 2)][num2hex(pref.g_facial, 2)][num2hex(pref.b_facial)]'><tr><td>__</td></tr></table></font> <a href='?src=\ref[src];facial_color=1'>Change Color</a><br>"
+	. += " Style: <a href='?src=\ref[src];facial_style=1'>[pref.f_style]</a><br>"
+	. += " Cycle: <a href='?src=\ref[src];cycle_fhair_style=-1'>&#8592;</a> <a href='?src=\ref[src];cycle_fhair_style=1'>&#8594;</a><br>"
+
+	if(has_flag(mob_species, HAS_EYE_COLOR))
+		. += "<br><b>Eyes</b><br>"
+		. += "<a href='?src=\ref[src];eye_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_eyes, 2)][num2hex(pref.g_eyes, 2)][num2hex(pref.b_eyes, 2)]'><table  style='display:inline;' bgcolor='#[num2hex(pref.r_eyes, 2)][num2hex(pref.g_eyes, 2)][num2hex(pref.b_eyes)]'><tr><td>__</td></tr></table></font><br>"
+
+	if(has_flag(mob_species, HAS_SKIN_COLOR))
+		. += "<br><b>Body Color</b><br>"
+		. += "<a href='?src=\ref[src];skin_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_skin, 2)][num2hex(pref.g_skin, 2)][num2hex(pref.b_skin, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_skin, 2)][num2hex(pref.g_skin, 2)][num2hex(pref.b_skin)]'><tr><td>__</td></tr></table></font><br>"
+
+	. += "<br><a href='?src=\ref[src];marking_style=1'>Body Markings +</a><br>"
+	for(var/M in pref.body_markings)
+		. += "[M] <a href='?src=\ref[src];marking_remove=[M]'>-</a> <a href='?src=\ref[src];marking_color=[M]'>Color</a>"
+		. += "<font face='fixedsys' size='3' color='[pref.body_markings[M]]'><table style='display:inline;' bgcolor='[pref.body_markings[M]]'><tr><td>__</td></tr></table></font>"
+		. += "<br>"
+
+	//. += "Needs Glasses: <a href='?src=\ref[src];disabilities=[NEARSIGHTED]'><b>[pref.disabilities & NEARSIGHTED ? "Yes" : "No"]</b></a><br>"
+	//. += "Limbs: <a href='?src=\ref[src];limbs=1'>Adjust</a> <a href='?src=\ref[src];reset_limbs=1'>Reset</a><br>"
+	//. += "Internal Organs: <a href='?src=\ref[src];organs=1'>Adjust</a><br>"
 
 	//display limbs below
 	var/ind = 0
@@ -199,7 +224,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			if(BP_KIDNEYS)
 				organ_name = BP_KIDNEYS
 			if(BP_STOMACH)
-				organ_name = BP_STOMACH				
+				organ_name = BP_STOMACH
 			if(BP_CHEST)
 				organ_name = "upper body"
 			if(BP_GROIN)
@@ -245,10 +270,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 					. += "\tMachine-interface [organ_name]"
 				else
 					. += "\tMechanically assisted [organ_name]"
-	if(!ind)
-		. += "\[...\]<br><br>"
-	else
-		. += "<br><br>"
 
 	. += "</td><td><b>Preview</b><br>"
 	. += "<div class='statusDisplay'><center><img src=previewicon.png width=[pref.preview_icon.Width()] height=[pref.preview_icon.Height()]></center></div>"
@@ -256,32 +277,6 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 	. += "<br><a href='?src=\ref[src];toggle_preview_value=[EQUIP_PREVIEW_LOADOUT]'>[pref.equip_preview_mob & EQUIP_PREVIEW_LOADOUT ? "Hide loadout" : "Show loadout"]</a>"
 	. += "<br><a href='?src=\ref[src];toggle_preview_value=[EQUIP_PREVIEW_JOB]'>[pref.equip_preview_mob & EQUIP_PREVIEW_JOB ? "Hide job gear" : "Show job gear"]</a>"
 	. += "</td></tr></table>"
-
-	. += "<b>Hair</b><br>"
-	if(has_flag(mob_species, HAS_HAIR_COLOR))
-		. += "Color: <font face='fixedsys' size='3' color='#[num2hex(pref.r_hair, 2)][num2hex(pref.g_hair, 2)][num2hex(pref.b_hair, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_hair, 2)][num2hex(pref.g_hair, 2)][num2hex(pref.b_hair)]'><tr><td>__</td></tr></table></font> <a href='?src=\ref[src];hair_color=1'>Change Color</a>"
-	. += "<br>Style: <a href='?src=\ref[src];hair_style=1'>[pref.h_style]</a><br>"
-	. += " Cycle: <a href='?src=\ref[src];cycle_hair_style=-1'>&#8592;</a><a href='?src=\ref[src];cycle_hair_style=1'>&#8594;</a><br>"
-
-	. += "<br><b>Facial</b><br>"
-	if(has_flag(mob_species, HAS_HAIR_COLOR))
-		. += "Color: <font face='fixedsys' size='3' color='#[num2hex(pref.r_facial, 2)][num2hex(pref.g_facial, 2)][num2hex(pref.b_facial, 2)]'><table  style='display:inline;' bgcolor='#[num2hex(pref.r_facial, 2)][num2hex(pref.g_facial, 2)][num2hex(pref.b_facial)]'><tr><td>__</td></tr></table></font> <a href='?src=\ref[src];facial_color=1'>Change Color</a><br>"
-	. += " Style: <a href='?src=\ref[src];facial_style=1'>[pref.f_style]</a><br>"
-	. += " Cycle: <a href='?src=\ref[src];cycle_fhair_style=-1'>&#8592;</a> <a href='?src=\ref[src];cycle_fhair_style=1'>&#8594;</a><br>"
-
-	if(has_flag(mob_species, HAS_EYE_COLOR))
-		. += "<br><b>Eyes</b><br>"
-		. += "<a href='?src=\ref[src];eye_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_eyes, 2)][num2hex(pref.g_eyes, 2)][num2hex(pref.b_eyes, 2)]'><table  style='display:inline;' bgcolor='#[num2hex(pref.r_eyes, 2)][num2hex(pref.g_eyes, 2)][num2hex(pref.b_eyes)]'><tr><td>__</td></tr></table></font><br>"
-
-	if(has_flag(mob_species, HAS_SKIN_COLOR))
-		. += "<br><b>Body Color</b><br>"
-		. += "<a href='?src=\ref[src];skin_color=1'>Change Color</a> <font face='fixedsys' size='3' color='#[num2hex(pref.r_skin, 2)][num2hex(pref.g_skin, 2)][num2hex(pref.b_skin, 2)]'><table style='display:inline;' bgcolor='#[num2hex(pref.r_skin, 2)][num2hex(pref.g_skin, 2)][num2hex(pref.b_skin)]'><tr><td>__</td></tr></table></font><br>"
-
-	. += "<br><a href='?src=\ref[src];marking_style=1'>Body Markings +</a><br>"
-	for(var/M in pref.body_markings)
-		. += "[M] <a href='?src=\ref[src];marking_remove=[M]'>-</a> <a href='?src=\ref[src];marking_color=[M]'>Color</a>"
-		. += "<font face='fixedsys' size='3' color='[pref.body_markings[M]]'><table style='display:inline;' bgcolor='[pref.body_markings[M]]'><tr><td>__</td></tr></table></font>"
-		. += "<br>"
 
 	. = jointext(.,null)
 
@@ -616,7 +611,7 @@ var/global/list/valid_bloodtypes = list("A+", "A-", "B+", "B-", "AB+", "AB-", "O
 			if("Kidneys")
 				organ = BP_KIDNEYS
 			if("Stomach")
-				organ = BP_STOMACH				
+				organ = BP_STOMACH
 
 		var/list/organ_choices = list("Normal","Assisted","Synthetic")
 		if(pref.organ_data[BP_CHEST] == "cyborg")
