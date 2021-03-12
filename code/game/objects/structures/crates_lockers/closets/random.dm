@@ -11,6 +11,24 @@
         var/RI = pickweight(random_list)
         new RI(src)
 
+/obj/structure/closet/random/spawner
+	icon_state = "syndicate"
+	icon_closed = "syndicate"
+
+	var/list/spawn_list = list(
+		/obj/structure/closet/random/engineering = 1,
+		/obj/structure/closet/random/medical = 1,
+		/obj/structure/closet/random/science = 1,
+		/obj/structure/closet/random/wardrobe = 1,
+		/obj/structure/closet/random/trash = 1,
+	)
+
+/obj/structure/closet/random/spawner/New()
+	var/turf/T = get_turf(src)
+	var/obj/structure/closet/random/R = pickweight(spawn_list)
+	new R(T)
+	qdel(src)
+
 // 17x3, 32x2 = 115
 /obj/structure/closet/random/engineering
     name = "engineering closet"
