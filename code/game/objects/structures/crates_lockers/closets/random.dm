@@ -36,13 +36,12 @@
     icon_closed = "yellow"
     random_list = list(
         /obj/item/weapon/rcd = 10,
-        /obj/item/device/multitool = 10,
+        /obj/item/weapon/storage/toolbox/syndicate = 10,
         /obj/item/weapon/extinguisher = 10,
 
         /obj/item/clothing/shoes/workboots = 30,
         /obj/item/clothing/head/beret/engineering = 30,
         /obj/item/clothing/head/welding = 30,
-        /obj/item/clothing/gloves/insulated = 30,
         /obj/item/clothing/mask/gas = 30,
         /obj/item/clothing/accessory/storage/brown_vest = 30,
         /obj/item/clothing/glasses/hud/standard/meson = 30,
