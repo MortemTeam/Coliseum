@@ -19,7 +19,7 @@
 		/obj/structure/closet/random/engineering = 1,
 		/obj/structure/closet/random/medical = 1,
 		/obj/structure/closet/random/science = 1,
-		/obj/structure/closet/random/wardrobe = 1,
+		/obj/structure/closet/random/weapon = 1,
 		/obj/structure/closet/random/trash = 1,
 	)
 
@@ -32,8 +32,9 @@
 // 17x3, 32x2 = 115
 /obj/structure/closet/random/engineering
     name = "engineering closet"
-    icon_state = "yellow"
-    icon_closed = "yellow"
+    icon_state = "engineering"
+    icon_closed = "engineering"
+    icon_opened = "engineeringopen"
     random_list = list(
         /obj/item/weapon/rcd = 10,
         /obj/item/weapon/storage/toolbox/syndicate = 10,
@@ -50,9 +51,10 @@
 
 // 17x3, 32x2 = 115
 /obj/structure/closet/random/medical
-    name = "medical closet"
-    icon_state = "blue"
-    icon_closed = "blue"
+    name = "medic closet"
+    icon_state = "medic"
+    icon_closed = "medic"
+    icon_opened = "medicopen"
     random_list = list(
         /obj/item/weapon/reagent_containers/hypospray = 10,
         /obj/item/weapon/storage/firstaid/surgery = 10,
@@ -86,8 +88,9 @@
 // 17x6, 32x4, 28x1 = 258
 /obj/structure/closet/random/science
     name = "science closet"
-    icon_state = "pink"
-    icon_closed = "pink"
+    icon_state = "science"
+    icon_closed = "science"
+    icon_opened = "scienceopen"
     random_list = list(
         /obj/item/clothing/mask/gas/syndicate = 10,
         /obj/item/clothing/glasses/hud/standard/thermal = 10,
@@ -104,10 +107,11 @@
     )
 
 // 17x18, 32x4, 28x1 = 462
-/obj/structure/closet/random/wardrobe
-    name = "wardrobe closet"
-    icon_state = "red"
-    icon_closed = "red"
+/obj/structure/closet/random/weapon
+    name = "weapon closet"
+    icon_state = "weapon"
+    icon_closed = "weapon"
+    icon_opened = "weaponopen"
     random_list = list(
         /obj/item/weapon/gun/energy/crossbow = 5,
         /obj/item/weapon/melee/energy/sword = 5,
@@ -145,8 +149,9 @@
 // 28x1 = 28
 /obj/structure/closet/random/trash
     name = "trash closet"
-    icon_state = "white"
-    icon_closed = "white"
+    icon_state = "trash"
+    icon_closed = "trash"
+    icon_opened = "trashopen"
     random_list = list(
         /obj/item/weapon/soap = 10,
         /obj/item/clothing/mask/pig = 10,
