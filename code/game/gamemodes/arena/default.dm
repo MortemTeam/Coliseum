@@ -8,7 +8,8 @@
 
 /datum/game_mode/last_stand/check_finished()
 	var/alive_player
-	for(var/mob/living/carbon/h in GLOB.player_list)
+	for(var/x in GLOB.human_mob_list)
+		var/mob/living/carbon/h = x
 		if(h.stat != DEAD)
 			alive_player += 1
 
@@ -18,7 +19,8 @@
 /datum/game_mode/last_stand/special_report()
 	var/list/parts = list()
 	var/num = 1
-	for(var/mob/living/carbon/h in GLOB.player_list)
+	for(var/x in GLOB.human_mob_list)
+		var/mob/living/carbon/h = x
 		if(h.stat != DEAD)
 			parts += "[num]. [h.real_name] <font color='green'><B>Success!</B></font>"
 		else:

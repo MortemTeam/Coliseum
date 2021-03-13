@@ -95,9 +95,8 @@
     icon_closed = "science"
     icon_opened = "scienceopen"
     random_list = list(
-        /obj/item/clothing/mask/gas/syndicate = 10,
+		/obj/item/weapon/reagent_containers/neuromod_shell/arena = 10,
         /obj/item/clothing/glasses/hud/standard/thermal = 10,
-		/obj/item/weapon/reagent_containers/neuromod_shell/human_random = 10,
         /obj/item/clothing/glasses/hud/standard/night = 10,
         /obj/item/clothing/glasses/hud/standard/material = 10,
         /obj/item/clothing/shoes/syndigaloshes = 10,
@@ -125,6 +124,7 @@
         /obj/item/weapon/gun/magnetic/railgun/flechette = 5,
         /obj/item/weapon/gun/magnetic/railgun = 5,
         /obj/item/weapon/gun/projectile/magnum_pistol = 5,
+		/obj/item/weapon/gun/projectile/automatic/l6_saw = 5,
 		/obj/item/weapon/gun/projectile/revolver = 5,
 
         /obj/item/weapon/storage/box/smokes = 10,

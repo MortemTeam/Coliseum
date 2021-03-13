@@ -93,20 +93,10 @@
 
 	if (do_after(user, 20, target, TRUE, TRUE, INCAPACITATION_DEFAULT, FALSE, FALSE))
 		visible_message(SPAN_WARNING("[user] did inject content of \the [src.name] to [target]"))
-
-		if (!istype(target, created_for))
-			target.adjustToxLoss(70)
-			target.adjustBrainLoss(70)
-			neuromod = null
-
-			return
-
-		if (neuromod in target.neuromods)
-			target.adjustToxLoss(50)
-			target.adjustBrainLoss(50)
+		if(neuromod in target.neuromods)
+			target.gib()
 		else
 			target.neuromods += neuromod
-			target.adjustToxLoss(25)
 
 		neuromod = null
 		UpdateDesc()

@@ -182,22 +182,17 @@
 /obj/item/clothing/suit/armor/laserproof/handle_shield(mob/user, damage, atom/damage_source = null, mob/attacker = null, def_zone = null, attack_text = "the attack")
 	if(istype(damage_source, /obj/item/projectile/energy) || istype(damage_source, /obj/item/projectile/beam))
 		var/obj/item/projectile/P = damage_source
+		visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")
 
-		var/reflectchance = 40 - round(damage/3)
-		if(!(def_zone in list(BP_CHEST, BP_GROIN))) //not changing this so arm and leg shots reflect, gives some incentive to not aim center-mass
-			reflectchance /= 2
-		if(P.starting && prob(reflectchance))
-			visible_message("<span class='danger'>\The [user]'s [src.name] reflects [attack_text]!</span>")
+		// Find a turf near or on the original location to bounce to
+		var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
+		var/new_y = P.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
+		var/turf/curloc = get_turf(user)
 
-			// Find a turf near or on the original location to bounce to
-			var/new_x = P.starting.x + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-			var/new_y = P.starting.y + pick(0, 0, 0, 0, 0, -1, 1, -2, 2)
-			var/turf/curloc = get_turf(user)
+		// redirect the projectile
+		P.redirect(new_x, new_y, curloc, user)
 
-			// redirect the projectile
-			P.redirect(new_x, new_y, curloc, user)
-
-			return PROJECTILE_CONTINUE // complete projectile permutation
+		return PROJECTILE_CONTINUE // complete projectile permutation
 
 //Reactive armor
 //When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)

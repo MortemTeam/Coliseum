@@ -72,16 +72,24 @@
 			stat(null, "SPAWN SETUP")
 			totalPlayers = 0
 			totalPlayersReady = 0
+			var/list/spawnpoints = list()
 			for(var/mob/new_player/player in GLOB.player_list)
 				var/datum/preferences/prefs = player.client.prefs
 				totalPlayers++
 				if(player.client && prefs)
 					highjob = prefs.job_low[1]
-					if(prefs.player_alt_titles)
+					if(prefs.player_alt_titles.len)
 						highjob = prefs.player_alt_titles[highjob]
 					if(player.ready)
 						totalPlayersReady++
-						stat("[prefs.spawnpoint]:", (player.ready)?("[player.key] ([highjob])"):(null))
+						if(!(prefs.spawnpoint in spawnpoints))
+							spawnpoints[prefs.spawnpoint] = list()
+						spawnpoints[prefs.spawnpoint] += "[player.key] ([highjob])"
+
+			for(var/sp in spawnpoints)
+				stat(sp, null)
+				for(var/msg in spawnpoints[sp])
+					stat(null, msg)
 
 
 /mob/new_player/Topic(href, href_list[])
