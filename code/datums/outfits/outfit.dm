@@ -165,6 +165,7 @@ var/list/outfits_decls_by_type_
 	if(r_hand)
 		H.put_in_r_hand(new r_hand(H))
 
+	/*
 	if((flags & OUTFIT_HAS_BACKPACK))
 		var/decl/backpack_outfit/bo
 		var/metadata
@@ -192,6 +193,8 @@ var/list/outfits_decls_by_type_
 			H.species.equip_survival_gear(H, 1)
 		else
 			H.species.equip_survival_gear(H)
+	*/
+
 	check_and_try_equip_xeno(H)
 
 /decl/hierarchy/outfit/proc/equip_id(mob/living/carbon/human/H, rank, assignment, equip_adjustments)

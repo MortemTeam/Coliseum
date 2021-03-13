@@ -7,7 +7,6 @@
 	shoes = null
 	id_type = null
 	pda_type = null
-	flags = OUTFIT_ADJUSTMENT_SKIP_SURVIVAL_GEAR
 
 /decl/hierarchy/outfit/job/gladiator/red
 	head = /obj/item/clothing/head/beanie/red

@@ -43,14 +43,12 @@
 		/obj/item/device/flashlight/upgraded = 20,
 		/obj/item/device/flashlight = 30,
 
-        /obj/item/clothing/shoes/workboots = 30,
-        /obj/item/clothing/head/beret/engineering = 30,
-        /obj/item/clothing/head/welding = 30,
         /obj/item/clothing/mask/gas = 30,
         /obj/item/clothing/accessory/storage/brown_vest = 30,
         /obj/item/clothing/glasses/hud/standard/meson = 30,
         /obj/item/weapon/crowbar/brace_jack = 30,
-		/obj/item/
+
+		/obj/item/weapon/rcd_ammo = 50,
     )
 
 // 17x3, 32x2 = 115
@@ -68,6 +66,7 @@
 		/obj/item/weapon/reagent_containers/glass/bottle/arena/hypersynap = 20,
 		/obj/item/weapon/reagent_containers/glass/bottle/arena/rezaxadon = 20,
 		/obj/item/weapon/reagent_containers/syringe = 20,
+		/obj/item/roller/adv = 20,
 
         /obj/item/clothing/suit/storage/toggle/labcoat = 30,
         /obj/item/clothing/glasses/hud/standard/medical = 30,

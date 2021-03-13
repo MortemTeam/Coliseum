@@ -7,6 +7,7 @@
 	var/totalPlayersReady = 0
 	var/datum/browser/panel
 	var/show_invalid_jobs = 0
+	var/highjob
 	universal_speak = 1
 
 	invisibility = 101
@@ -75,7 +76,7 @@
 				var/datum/preferences/prefs = player.client.prefs
 				totalPlayers++
 				if(player.client && prefs)
-					var/highjob = prefs.job_low[1]
+					highjob = prefs.job_low[1]
 					if(prefs.player_alt_titles)
 						highjob = prefs.player_alt_titles[highjob]
 					if(player.ready)

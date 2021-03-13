@@ -889,7 +889,7 @@
 
 	var/list/mob/creatures = list()
 	var/turf/user_turf = get_turf(src)
-	for(var/mob/living/carbon/h in world)
+	for(var/mob/living/carbon/h in GLOB.player_list)
 		var/turf/temp_turf = get_turf(h)
 		if((temp_turf.z != user_turf.z) || h.stat!=CONSCIOUS)
 			continue
