@@ -40,6 +40,9 @@
         /obj/item/weapon/storage/toolbox/syndicate = 10,
         /obj/item/weapon/extinguisher = 10,
 
+		/obj/item/device/flashlight/upgraded = 20,
+		/obj/item/device/flashlight = 30,
+
         /obj/item/clothing/shoes/workboots = 30,
         /obj/item/clothing/head/beret/engineering = 30,
         /obj/item/clothing/head/welding = 30,
@@ -47,6 +50,7 @@
         /obj/item/clothing/accessory/storage/brown_vest = 30,
         /obj/item/clothing/glasses/hud/standard/meson = 30,
         /obj/item/weapon/crowbar/brace_jack = 30,
+		/obj/item/
     )
 
 // 17x3, 32x2 = 115
@@ -94,6 +98,7 @@
     random_list = list(
         /obj/item/clothing/mask/gas/syndicate = 10,
         /obj/item/clothing/glasses/hud/standard/thermal = 10,
+		/obj/item/weapon/reagent_containers/neuromod_shell/human_random = 10,
         /obj/item/clothing/glasses/hud/standard/night = 10,
         /obj/item/clothing/glasses/hud/standard/material = 10,
         /obj/item/clothing/shoes/syndigaloshes = 10,
@@ -104,6 +109,7 @@
         /obj/item/weapon/defibrillator/compact/combat/loaded = 10,
         /obj/item/bodybag/cryobag = 10,
         /obj/item/clothing/suit/armor/reactive = 10,
+		/obj/item/device/flashlight/slime = 10,
     )
 
 // 17x18, 32x4, 28x1 = 462
@@ -131,7 +137,10 @@
         /obj/item/weapon/gun/projectile/shotgun/pump/combat = 20,
         /obj/item/weapon/gun/projectile/automatic/wt550 = 20,
         /obj/item/weapon/gun/projectile/automatic/machine_pistol/mini_uzi = 20,
+		/obj/item/weapon/gun/energy/laser = 20,
 
+		/obj/item/device/flashlight/flare = 30,
+		/obj/item/device/flashlight/maglight = 30,
         /obj/item/clothing/head/helmet/ablative = 30,
         /obj/item/clothing/head/helmet/ballistic = 30,
 		/obj/item/clothing/suit/armor/laserproof = 30,

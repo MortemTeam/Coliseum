@@ -88,7 +88,7 @@
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 	var/datum/job/lastJob
 	if (!job_master)		return
-	for(var/datum/job/job in job_master.occupations)
+	for(var/datum/job/arena/job in job_master.occupations)
 
 		index += 1
 		if((index >= limit) || (job.title in splitJobs))
@@ -166,16 +166,14 @@
 
 		. += "<a href='?src=\ref[src];set_job=[rank]'>"
 
-		if(rank == "Assistant")//Assistant is special
-			if("Assistant" in pref.job_low)
-				. += " <font color=55cc55>\[Yes]</font>"
-			else
-				. += " <font color=black>\[No]</font>"
-			if(job.alt_titles) //Blatantly cloned from a few lines down.
-				. += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'>&nbsp</td><td><a href='?src=\ref[src];select_alt_title=\ref[job]'>\[[pref.GetPlayerAltTitle(job)]\]</a></td></tr>"
-			. += "</a></td></tr>"
-			continue
-
+		if(rank in pref.job_low)
+			. += " <font color=55cc55>\[Yes]</font>"
+		else
+			. += " <font color=black>\[No]</font>"
+		if(job.alt_titles) //Blatantly cloned from a few lines down.
+			. += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'>&nbsp</td><td><a href='?src=\ref[src];select_alt_title=\ref[job]'>\[[pref.GetPlayerAltTitle(job)]\]</a></td></tr>"
+		. += "</a></td></tr>"
+		/*
 		if(pref.job_high == job.title)
 			. += " <font color=55cc55>\[High]</font>"
 		else if(job.title in pref.job_medium)
@@ -187,6 +185,8 @@
 		if(job.alt_titles)
 			. += "</a></td></tr><tr bgcolor='[lastJob.selection_color]'><td width='60%' align='center'>&nbsp</td><td><a href='?src=\ref[src];select_alt_title=\ref[job]'>\[[pref.GetPlayerAltTitle(job)]\]</a></td></tr>"
 		. += "</a></td></tr>"
+		*/
+
 	. += "</td'></tr></table>"
 	. += "</center></table><center>"
 
@@ -268,13 +268,13 @@
 	if(!job)
 		return 0
 
-	if(role == "Assistant")
-		if(job.title in pref.job_low)
-			pref.job_low -= job.title
-		else
-			pref.job_low |= job.title
-		return 1
+	if(job.title in pref.job_low)
+		pref.job_low -= job.title
+	else
+		pref.job_low |= job.title
+	return 1
 
+	/*
 	if(role == "Captain" || role == "Head of Personnel" || role == "Chief Engineer" || role == "Chief Medical Officer" || role == "Research Director" || role == "Head of Security")
 		SSwarnings.show_warning(user.client, WARNINGS_HEADS, "window=Warning;size=440x300;can_resize=0;can_minimize=0")
 	if(job.title == pref.job_high)
@@ -285,8 +285,8 @@
 		SetJobDepartment(job, 3)
 	else//job = Never
 		SetJobDepartment(job, 4)
-
 	return 1
+	*/
 
 /datum/category_item/player_setup_item/occupation/proc/SetJobDepartment(datum/job/job, level)
 	if(!job || !level)	return 0

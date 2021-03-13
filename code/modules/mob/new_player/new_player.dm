@@ -68,15 +68,20 @@
 		if(GAME_STATE <= RUNLEVEL_LOBBY)
 			stat("Time To Start:", "[round(SSticker.pregame_timeleft/10)][SSticker.round_progressing ? "" : " (DELAYED)"]")
 			stat("Players: [totalPlayers]", "Players Ready: [totalPlayersReady]")
+			stat(null, "SPAWN SETUP")
 			totalPlayers = 0
 			totalPlayersReady = 0
 			for(var/mob/new_player/player in GLOB.player_list)
-				var/highjob
-				if(player.client && player.client.prefs && player.client.prefs.job_high)
-					highjob = " as [player.client.prefs.job_high]"
-				stat("[player.key]", (player.ready)?("(Playing[highjob])"):(null))
+				var/datum/preferences/prefs = player.client.prefs
 				totalPlayers++
-				if(player.ready)totalPlayersReady++
+				if(player.client && prefs)
+					var/highjob = prefs.job_low[1]
+					if(prefs.player_alt_titles)
+						highjob = prefs.player_alt_titles[highjob]
+					if(player.ready)
+						totalPlayersReady++
+						stat("[prefs.spawnpoint]:", (player.ready)?("[player.key] ([highjob])"):(null))
+
 
 /mob/new_player/Topic(href, href_list[])
 	if(!client)	return 0
@@ -414,7 +419,7 @@
 		if(character.mind.assigned_role != "Cyborg")
 			CreateModularRecord(character)
 			SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
-			
+
 		AnnounceArrival(character.real_name, job, spawnpoint)
 
 		matchmaker.do_matchmaking()
@@ -516,6 +521,7 @@
 
 		client.prefs.copy_to(new_character)
 
+	new_character.real_name = client.ckey
 	sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))// MAD JAMS cant last forever yo
 
 	if(mind)
