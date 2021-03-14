@@ -38,7 +38,7 @@
 	. = ..()
 
 	if(!work_modes)
-		var/decl/hierarchy/h = decls_repository.get_decl(/decl/hierarchy/rcd_mode)
+		var/decl/hierarchy/h = decls_repository.get_decl(/decl/hierarchy/rcd_mode/arena)
 		work_modes = h.children
 	work_mode = work_modes[1]
 
@@ -292,3 +292,45 @@
 
 /decl/hierarchy/rcd_mode/deconstruction/wall/can_handle_work(obj/item/weapon/rcd/rcd, turf/simulated/wall/target)
 	return ..() && (rcd.canRwall || !target.reinf_material)
+
+/*
+	ARENA
+*/
+
+/decl/hierarchy/rcd_mode/arena
+	delay = 1 SECONDS
+	can_handle_work(obj/item/weapon/rcd/rcd, atom/target)
+		return TRUE
+
+/decl/hierarchy/rcd_mode/arena/make_ammo
+	name = "Make Ammo"
+	cost = 10
+
+/decl/hierarchy/rcd_mode/arena/make_ammo/base/get_work_result(target)
+	return pick(
+		/obj/item/ammo_magazine/box/a556, //Light machine
+		/obj/item/ammo_magazine/mc9mmt,  //9mm submachine WT550
+		/obj/item/ammo_magazine/c556,    //STS35
+		/obj/item/ammo_magazine/c45uzi,  //Mini UZI
+		/obj/item/ammo_magazine/c45m,    //Colt
+		/obj/item/ammo_magazine/a10mm,   //C20R
+		/obj/item/ammo_magazine/a50,     //Magnum
+		/obj/item/ammo_magazine/a357,    //Revolver
+
+		/obj/item/ammo_casing/shotgun,         //Slug
+		/obj/item/ammo_casing/shotgun/pellet,  //Shell
+		/obj/item/ammo_casing/shotgun/beanbag, //Beanbag
+		/obj/item/ammo_casing/shotgun/flash,   //Flash
+	)
+
+/decl/hierarchy/rcd_mode/arena/make_inflatable_door
+	name = "Make Inflatable Door"
+	cost = 20
+	base
+		work_type = /obj/structure/inflatable/door
+
+/decl/hierarchy/rcd_mode/arena/make_plasma_window
+	name = "Make Plasma Reinforced Window"
+	cost = 30
+	base
+		work_type = /obj/structure/window/plasmareinforced/full

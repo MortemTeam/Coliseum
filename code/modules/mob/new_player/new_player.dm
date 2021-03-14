@@ -510,6 +510,10 @@
 
 	new_character.lastarea = get_area(spawn_turf)
 
+	highjob = client.prefs.job_low[1]
+	if(client.prefs.player_alt_titles.len)
+		highjob = client.prefs.player_alt_titles[highjob]
+
 	new_character.real_name = client.ckey
 	new_character.highjob = highjob
 	sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))// MAD JAMS cant last forever yo
