@@ -510,42 +510,13 @@
 
 	new_character.lastarea = get_area(spawn_turf)
 
-	for(var/lang in client.prefs.alternate_languages)
-		var/datum/language/chosen_language = all_languages[lang]
-		if(chosen_language)
-			var/is_species_lang = (chosen_language.name in new_character.species.secondary_langs)
-			if(is_species_lang || ((!(chosen_language.flags & RESTRICTED) || has_admin_rights()) && is_alien_whitelisted(src, chosen_language)))
-				new_character.add_language(lang)
-
-	if(GLOB.random_players)
-		new_character.gender = pick(MALE, FEMALE)
-		client.prefs.real_name = random_name(new_character.gender)
-		client.prefs.randomize_appearance_and_body_for(new_character)
-	else
-		if(jobban_isbanned(src, "NAME"))
-			client.prefs.real_name = random_name(new_character.gender)
-
-		if(jobban_isbanned(src, "APPEARANCE"))
-			client.prefs.randomize_appearance_and_body_for(new_character)
-
-		client.prefs.copy_to(new_character)
-
 	new_character.real_name = client.ckey
+	new_character.highjob = highjob
 	sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))// MAD JAMS cant last forever yo
 
 	if(mind)
 		mind.active = 0					//we wish to transfer the key manually
 		mind.original = new_character
-		if(client.prefs.memory)
-			mind.store_memory(client.prefs.memory)
-		if(client.prefs.relations.len && mind.may_have_relations())
-			for(var/T in client.prefs.relations)
-				var/TT = matchmaker.relation_types[T]
-				var/datum/relation/R = new TT
-				R.holder = mind
-				R.info = client.prefs.relations_info[T]
-			mind.gen_relations_info = client.prefs.relations_info["general"]
-		mind.traits = client.prefs.traits.Copy()
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
 
 	new_character.apply_traits()
@@ -553,10 +524,6 @@
 	new_character.dna.ready_dna(new_character)
 	new_character.dna.b_type = client.prefs.b_type
 	new_character.sync_organ_dna()
-	if(client.prefs.disabilities)
-		// Set defer to 1 if you add more crap here so it only recalculates struc_enzymes once. - N3X
-		new_character.dna.SetSEState(GLOB.GLASSESBLOCK,1,0)
-		new_character.disabilities |= NEARSIGHTED
 
 	// Do the initial caching of the player's body icons.
 	new_character.force_update_limbs()

@@ -15,7 +15,8 @@
 	if(!GLOB.spawntypes)
 		spawntypes()
 
-	GLOB.spawntypes[spawnpoint].turfs += loc
+	GLOB.spawntypes[spawnpoint].turfs.Add(loc)
+	GLOB.spawntypes["Random"].turfs.Add(loc)
 
 /obj/effect/spawnmaker/proc/delete()
 	delete_me = 1

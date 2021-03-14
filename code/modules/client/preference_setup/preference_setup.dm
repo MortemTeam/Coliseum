@@ -13,16 +13,19 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	sort_order = 1
 	category_item_type = /datum/category_item/player_setup_item/general
 
+/*
 /datum/category_group/player_setup_category/skill_preferences
 	name = "Skills"
 	sort_order = 2
 	category_item_type = /datum/category_item/player_setup_item/skills
+*/
 
 /datum/category_group/player_setup_category/occupation_preferences
 	name = "Occupation"
 	sort_order = 3
 	category_item_type = /datum/category_item/player_setup_item/occupation
 
+/*
 /datum/category_group/player_setup_category/appearance_preferences
 	name = "Roles"
 	sort_order = 4
@@ -32,6 +35,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	name = "Matchmaking"
 	sort_order = 5
 	category_item_type = /datum/category_item/player_setup_item/relations
+*/
 
 /datum/category_group/player_setup_category/loadout_preferences
 	name = "Loadout"
@@ -43,6 +47,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	sort_order = 7
 	category_item_type = /datum/category_item/player_setup_item/player_global
 
+/*
 /datum/category_group/player_setup_category/law_pref
 	name = "Laws"
 	sort_order = 8
@@ -52,7 +57,7 @@ var/const/CHARACTER_PREFERENCE_INPUT_TITLE = "Character Preference"
 	name = "Traits"
 	sort_order = 9
 	category_item_type = /datum/category_item/player_setup_item/traits
-
+*/
 
 /****************************
 * Category Collection Setup *

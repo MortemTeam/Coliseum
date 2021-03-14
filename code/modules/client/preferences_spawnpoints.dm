@@ -8,11 +8,12 @@ GLOBAL_VAR(spawntypes)
 			var/display_name = initial(S.display_name)
 			if((display_name in GLOB.using_map.allowed_spawns) || initial(S.always_visible))
 				GLOB.spawntypes[display_name] = new S
+				GLOB.spawntypes[display_name].turfs = list()
 	return GLOB.spawntypes
 
 /datum/spawnpoint
 	var/msg		  //Message to display on the arrivals computer.
-	var/list/turfs   //List of turfs to spawn on.
+	var/list/turfs  //List of turfs to spawn on.
 	var/display_name //Name used in preference setup.
 	var/always_visible = FALSE	// Whether this spawn point is always visible in selection, ignoring map-specific settings.
 	var/list/restrict_job = null
@@ -21,6 +22,9 @@ GLOBAL_VAR(spawntypes)
 /datum/spawnpoint/arena
 	var/spawn_count = 1
 	always_visible = TRUE
+
+	random
+		display_name = "Random"
 
 	command_post
 		display_name = "Command Post"

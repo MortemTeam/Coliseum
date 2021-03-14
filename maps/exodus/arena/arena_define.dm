@@ -5,12 +5,12 @@
 	path = "exodus/arena"
 
 	station_levels = list(1)
-	//admin_levels = list(3)
-	//contact_levels = list(1,4)
-	//player_levels = list(1,4,5,7)
-	//sealed_levels = list(2)
+	admin_levels = list()
+	contact_levels = list()
+	player_levels = list()
+	sealed_levels = list()
 	empty_levels = list()
-	//accessible_z_levels = list("1" = 10, "4" = 10, "5" = 15, "7" = 60)
+	accessible_z_levels = list()
 	//base_turf_by_z = list("1" = /turf/simulated/floor/asteroid) // Moonbase
 	dynamic_z_levels = list("1" = 'casino.dmm')
 
@@ -22,3 +22,14 @@
 	company_name  = "Hetorm Co."
 	company_short = "HS"
 	system_name   = "Nyx"
+
+	allowed_spawns = list(
+		"Random",
+		"Command Post", "Guest Shuttle", "Hangar Post", "Stash",
+		"Left Toilet", "Right Toilet",
+		"First Dorm", "Second Dorm", "Third Dorm",
+		"Canteen", "Kitchen", "Hall Post", "Bar Backroom", "Storage",
+		"First Pod", "Second Pod", "Third Pod", "Left Thruster", "Right Thruster",
+	)
+
+	allowed_jobs = list(/datum/job/arena/gladiator)

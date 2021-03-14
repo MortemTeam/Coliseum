@@ -23,11 +23,11 @@
 	. = ..()
 
 /obj/item/weapon/reagent_containers/neuromod_shell/arena/Initialize()
-	neuromod = list(
+	neuromod = pick(list(
 		/datum/neuromod/light_regeneration,
 		/datum/neuromod/remoteview,
 		/datum/neuromod/increase_speed,
-	)
+	))
 	created_for = /mob/living/carbon/human
 	. = ..()
 
