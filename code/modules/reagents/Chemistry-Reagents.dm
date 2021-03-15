@@ -23,6 +23,11 @@
 	var/glass_required = null // Required glass for current cocktail
 	var/list/glass_special = null // null equivalent to list()
 
+	var/list/neuromod_irritant = list(
+		"Tramadol", "Peridaxon", "Rezadone",
+		"Hyperzine", "Synaptizine",
+	)
+
 /datum/reagent/New(datum/reagents/holder)
 	if(!istype(holder))
 		CRASH("Invalid reagents holder: [log_info_line(holder)]")
@@ -63,7 +68,6 @@
 			removed *= mod.metabolism_percent
 	removed = M.get_adjusted_metabolism(removed)
 
-
 	//adjust effective amounts - removed, dose, and max_dose - for mob size
 	var/effective = removed
 	if(!(flags & IGNORE_MOB_SIZE) && location != CHEM_TOUCH)
@@ -78,6 +82,13 @@
 				affect_ingest(M, alien, effective)
 			if(CHEM_TOUCH)
 				affect_touch(M, alien, effective)
+
+	//take toxin because use neuromod
+	if(istype(M, /mob/living/carbon/human))
+		var/mob/living/carbon/human/victim = M
+		if(name in neuromod_irritant)
+			victim.reagents.add_reagent(/datum/reagent/toxin, removed * length(victim.neuromods))
+			victim.reagents.update_total()
 
 	if(volume)
 		remove_self(removed)

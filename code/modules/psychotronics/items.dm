@@ -35,7 +35,7 @@
 	if (!N)
 		crash_with("trying to get [neuromod] but it is not exists")
 
-	desc = initial(desc) + "<br>Contains: [N.name]" + "<br>Created for [L.species]"
+	desc = initial(desc) + "<br>Contains: ???"
 
 /obj/item/weapon/reagent_containers/neuromod_shell/Initialize()
 	. = ..()
