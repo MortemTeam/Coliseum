@@ -358,13 +358,16 @@
 			CC.screen_loc = "NORTH-[i],EAST-[j]"
 			. += CC
 
+/obj/screen/click_catcher/proc/resolve(var/mob/user)
+	return screen_loc2turf(screen_loc, get_turf(user))
+
 /obj/screen/click_catcher/Click(location, control, params)
 	var/list/modifiers = params2list(params)
 	if(modifiers["middle"] && istype(usr, /mob/living/carbon))
 		var/mob/living/carbon/C = usr
 		C.swap_hand()
 	else
-		var/turf/T = screen_loc2turf(screen_loc, get_turf(usr))
+		var/turf/T = resolve(usr)
 		if(T)
 			T.Click(location, control, params)
 	. = 1

@@ -16,9 +16,8 @@
 	wielded_item_state = "gun_wielded"
 
 	firemodes = list(
-		list(mode_name="semiauto",       burst=1,    fire_delay=0,    move_delay=null,    one_hand_penalty=5, burst_accuracy=null, dispersion=null),
-		list(mode_name="2-beam bursts", burst=2,    fire_delay=null, move_delay=3,    one_hand_penalty=6, burst_accuracy=list(0,-1,-1), dispersion=list(0.0, 0.6, 1.0))
-		)
+		/datum/firemode/semiauto,
+	)
 
 /obj/item/weapon/gun/energy/pulse_rifle/carbine
 	name = "pulse carbine"

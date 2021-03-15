@@ -9,6 +9,9 @@
 	var/name = "default"
 	var/list/settings = list()
 
+	var/burst
+	var/fire_delay
+
 /datum/firemode/New(obj/item/weapon/gun/gun, list/properties = null)
 	..()
 	if(!properties) return
@@ -24,8 +27,34 @@
 			settings[propname] = propvalue
 
 /datum/firemode/proc/apply_to(obj/item/weapon/gun/gun)
+	gun.burst = burst
+	gun.fire_delay = fire_delay
 	for(var/propname in settings)
 		gun.vars[propname] = settings[propname]
+
+/datum/firemode/semiauto
+	name = "Single Shot"
+	burst = 1
+	fire_delay = 0
+	settings = list(burst_accuracy=list(), dispersion=list())
+
+/datum/firemode/fullauto
+	name = "Full Auto"
+	burst = 0
+	fire_delay = 0
+	settings = list(burst_accuracy=list(0,-1,-1,-1,-2), dispersion=list(0.6, 0.6, 1.0, 1.0, 1.2))
+
+/datum/firemode/fullauto/rpm800
+	fire_delay = 0.8
+
+/datum/firemode/fullauto/rpm600
+	fire_delay = 1
+
+/datum/firemode/fullauto/rpm400
+	fire_delay = 1.5
+
+/datum/firemode/fullauto/rpm300
+	fire_delay = 2
 
 //Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
 /obj/item/weapon/gun
@@ -54,8 +83,8 @@
 	zoomdevicename = "scope"
 
 	var/burst = 1
-	var/fire_delay = 6 	//delay after shooting before the gun can be used again
-	var/burst_delay = 2	//delay between shots, if firing in bursts
+	var/fire_delay = 0 	//delay after shooting before the gun can be used again
+	var/burst_delay = 0	//delay between shots, if firing in bursts
 	var/move_delay = 1
 	var/fire_sound = 'sound/weapons/gunshot/gunshot.ogg'
 	var/far_fire_sound = null
@@ -75,7 +104,9 @@
 	var/next_fire_time = 0
 
 	var/sel_mode = 1 //index of the currently selected mode
-	var/list/firemodes = list()
+	var/list/firemodes = list(
+		/datum/firemode/semiauto,
+	)
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
@@ -89,7 +120,11 @@
 /obj/item/weapon/gun/New()
 	..()
 	for(var/i in 1 to firemodes.len)
-		firemodes[i] = new /datum/firemode(src, firemodes[i])
+		var/datum/firemode/FM = firemodes[i]
+		if(FM)
+			firemodes[i] = new FM(src)
+		else:
+			firemodes[i] = new /datum/firemode(src, firemodes[i])
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
@@ -139,6 +174,16 @@
 		return 0
 	return 1
 
+/obj/item/weapon/gun/proc/burst_check(var/shot_count, var/client/C)
+	if(shot_count == 1)
+		return TRUE
+	if(!C || !C.mouse_pushed)
+		return FALSE
+	if(!burst)
+		return TRUE
+	if(shot_count <= burst)
+		return TRUE
+
 /obj/item/weapon/gun/emp_act(severity)
 	for(var/obj/O in contents)
 		O.emp_act(severity)
@@ -185,28 +230,26 @@
 	var/held_twohanded = (user.can_wield_item(src) && src.is_held_twohanded(user))
 
 	//actually attempt to shoot
-	for(var/i in 1 to burst)
-		user.face_atom(user.last_mouse_target)
+	var/client/C = user.client
+	var/i = 1
+	while(burst_check(i, C))
+		user.face_atom(C.mouse_target)
 		var/obj/projectile = consume_next_projectile(user)
 		if(!projectile)
 			handle_click_empty(user)
 			break
 
-		process_accuracy(projectile, user, user.last_mouse_target, i, held_twohanded)
+		process_accuracy(projectile, user, C.mouse_target, i, held_twohanded)
 
 		if(pointblank)
-			process_point_blank(projectile, user, user.last_mouse_target)
+			process_point_blank(projectile, user, C.mouse_target)
 
-		if(process_projectile(projectile, user, user.last_mouse_target, user.zone_sel?.selecting, clickparams))
-			handle_post_fire(user, user.last_mouse_target, pointblank, reflex)
+		if(process_projectile(projectile, user, C.mouse_target, user.zone_sel?.selecting, clickparams))
+			handle_post_fire(user, C.mouse_target, pointblank, reflex)
 			update_icon()
 
-		if(i < burst)
-			sleep(burst_delay)
-
-		if(!(user.last_mouse_target && user.last_mouse_target.loc))
-			user.last_mouse_target = get_turf(user.last_mouse_target)
-			pointblank = 0
+		i++
+		sleep(burst_delay)
 
 	next_fire_time = world.time + fire_delay
 

@@ -1,11 +1,39 @@
-/mob/living
-	var/atom/last_mouse_target // save last atom entry
+/client
+	var/mouse_target // save last atom entry
+	var/mouse_pushed = 0
+
+/client/proc/resolve_world_target(var/a)
+
+	if (istype(a, /obj/screen/click_catcher))
+		var/obj/screen/click_catcher/CC = a
+		return CC.resolve(mob)
+
+	if (istype(a, /turf))
+		return a
+
+	else if (istype(a, /atom))
+		var/atom/A = a
+		if (istype(A.loc, /turf))
+			return A
+	return null
+
+/client/MouseDown(object,location,control,params)
+	..()
+	mouse_pushed = 1
+
+/client/MouseDrag(over_object, var/atom/src_location, over_location, src_control, over_control, params)
+	src_location = resolve_world_target(src_location)
+	if(src_location)
+		src_location.MouseEntered(src_location, src_control, params)
+
+/client/MouseUp(object,location,control,params)
+	mouse_pushed = 0
 
 /atom/MouseEntered(location, control, params)
 	if(istype(usr, /mob/living))
-		var/mob/living/L = usr
+		var/client/C = usr.client
 		if(istype(src, /obj/screen/click_catcher))
-			var/obj/screen/S = src
-			L.last_mouse_target = screen_loc2turf(S.screen_loc, get_turf(usr))
+			var/obj/screen/click_catcher/CC = src
+			C.mouse_target = CC.resolve(usr)
 		else
-			L.last_mouse_target = src
+			C.mouse_target = src

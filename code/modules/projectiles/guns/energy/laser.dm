@@ -1,3 +1,19 @@
+/datum/firemode/beam
+	name = "beam"
+	settings = list(projectile_type=/obj/item/projectile/beam/midlaser)
+
+/datum/firemode/slug
+	name = "slug"
+	settings = list(projectile_type=/obj/item/projectile/energy/laser/mid)
+
+/datum/firemode/beam_heavy
+	name = "heavy beam"
+	settings = list(projectile_type=/obj/item/projectile/beam/heavylaser)
+
+/datum/firemode/slug_heavy
+	name = "heavy slug"
+	settings = list(projectile_type=/obj/item/projectile/energy/laser/heavy)
+
 /obj/item/weapon/gun/energy/laser
 	name = "laser carbine"
 	desc = "A Hephaestus Industries G40E carbine, designed to kill with concentrated energy blasts."
@@ -17,10 +33,7 @@
 	projectile_type = /obj/item/projectile/beam/midlaser
 	wielded_item_state = "laserrifle-wielded"
 
-	firemodes = list(
-		list(mode_name="beam", projectile_type=/obj/item/projectile/beam/midlaser),
-		list(mode_name="slug", projectile_type=/obj/item/projectile/energy/laser/mid)
-	)
+	firemodes = list(/datum/firemode/beam, /datum/firemode/slug)
 
 
 /obj/item/weapon/gun/energy/laser/mounted
@@ -131,10 +144,7 @@ obj/item/weapon/gun/energy/retro
 	mod_reach = 1.0
 	mod_handy = 1.0
 
-	firemodes = list(
-		list(mode_name="beam", projectile_type=/obj/item/projectile/beam/heavylaser),
-		list(mode_name="slug", projectile_type=/obj/item/projectile/energy/laser/heavy)
-	)
+	firemodes = list(/datum/firemode/beam_heavy, /datum/firemode/slug_heavy)
 
 /obj/item/weapon/gun/energy/lasercannon/mounted
 	name = "mounted laser cannon"

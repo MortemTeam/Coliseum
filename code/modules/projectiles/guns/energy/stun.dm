@@ -1,3 +1,23 @@
+/datum/firemode/electrode
+	name = "electrode"
+	settings = list(projectile_type=/obj/item/projectile/energy/electrode)
+
+/datum/firemode/stun
+	name = "stun"
+	settings = list(projectile_type=/obj/item/projectile/beam/stun)
+
+/datum/firemode/shock
+	name = "shock"
+	settings = list(projectile_type=/obj/item/projectile/beam/stun/shock)
+
+/datum/firemode/stun_heavy
+	name = "heavy stun"
+	settings = list(projectile_type=/obj/item/projectile/beam/stun/heavy)
+
+/datum/firemode/shock_heavy
+	name = "heavy shock"
+	settings = list(projectile_type=/obj/item/projectile/beam/stun/shock/heavy)
+
 /obj/item/weapon/gun/energy/taser
 	name = "Mk30 NL"
 	desc = "The NT Mk30 NL is a small, low capacity gun used for non-lethal takedowns. Produced by NT, it's actually a licensed version of a W-T design. It can switch between high and low intensity stun shots."
@@ -11,10 +31,7 @@
 	mod_reach = 0.5
 	mod_handy = 1.0
 
-	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun),
-		list(mode_name="shock", projectile_type=/obj/item/projectile/beam/stun/shock),
-		)
+	firemodes = list(/datum/firemode/stun, /datum/firemode/shock)
 
 /obj/item/weapon/gun/energy/taser/carbine
 	name = "Mk44 NL"
@@ -33,10 +50,7 @@
 	projectile_type = /obj/item/projectile/beam/stun/heavy
 	wielded_item_state = "tasercarbine-wielded"
 
-	firemodes = list(
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun/heavy),
-		list(mode_name="shock", projectile_type=/obj/item/projectile/beam/stun/shock/heavy),
-		)
+	firemodes = list(/datum/firemode/stun_heavy, /datum/firemode/shock_heavy)
 
 /obj/item/weapon/gun/energy/taser/mounted
 	name = "mounted taser gun"
@@ -46,11 +60,7 @@
 	use_external_power = 1
 	projectile_type = /obj/item/projectile/energy/electrode
 
-	firemodes = list(
-		list(mode_name="sphere", projectile_type=/obj/item/projectile/energy/electrode),
-		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun),
-		list(mode_name="shock", projectile_type=/obj/item/projectile/beam/stun/shock),
-		)
+	firemodes = list(/datum/firemode/electrode, /datum/firemode/stun, /datum/firemode/shock)
 
 /obj/item/weapon/gun/energy/taser/mounted/cyborg
 	name = "taser gun"

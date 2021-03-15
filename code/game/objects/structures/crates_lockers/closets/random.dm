@@ -132,7 +132,7 @@
         /obj/item/weapon/grenade/frag = 10,
         /obj/item/weapon/grenade/flashbang = 10,
 
-        /obj/item/weapon/gun/energy/gun = 20,
+		/obj/item/weapon/gun/projectile/revolver = 20,
         /obj/item/weapon/gun/projectile/automatic/c20r = 20,
         /obj/item/weapon/gun/projectile/shotgun/pump/combat = 20,
         /obj/item/weapon/gun/projectile/automatic/wt550 = 20,
