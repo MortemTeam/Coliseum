@@ -2763,8 +2763,6 @@
 #include "maps\_map_include.dm"
 #include "maps\cache_ref.dm"
 #include "maps\away\away_sites.dm"
-#include "maps\away\casino\casino.dm"
-#include "maps\away\slavers\slavers_base.dm"
 #include "maps\exodus\exodus.dm"
 #include "maps\exodus\exodus_define.dm"
 #include "maps\exodus\arena\arena_define.dm"
