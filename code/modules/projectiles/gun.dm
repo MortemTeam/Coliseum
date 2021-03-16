@@ -232,7 +232,7 @@
 	//actually attempt to shoot
 	var/client/C = user.client
 	var/i = 1
-	while(burst_check(i, C))
+	spawn while(burst_check(i, C))
 		user.face_atom(C.mouse_target)
 		var/obj/projectile = consume_next_projectile(user)
 		if(!projectile)

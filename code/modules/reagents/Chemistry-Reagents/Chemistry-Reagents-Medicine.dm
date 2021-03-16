@@ -544,6 +544,9 @@
 		M.emote(pick("twitch", "blink_r", "shiver"))
 	M.add_chemical_effect(CE_SPEEDBOOST, 2)
 	M.add_chemical_effect(CE_PULSE, 2)
+	var/mob/living/carbon/human/H = M
+	if(H && H.poise < H.poise_pool)
+		H.poise += 1
 
 /datum/reagent/ethylredoxrazine
 	name = "Ethylredoxrazine"

@@ -239,7 +239,6 @@
 	//LMG, better sustained fire accuracy than assault rifles (comparable to SMG), higer move delay and one-handing penalty
 	//No single-shot or 3-round-burst modes since using this weapon should come at a cost to flexibility.
 	firemodes = list(
-		/datum/firemode/semiauto,
 		/datum/firemode/fullauto/rpm600,
 	)
 
