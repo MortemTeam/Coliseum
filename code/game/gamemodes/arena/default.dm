@@ -27,7 +27,7 @@
 			alive_team++
 
 	if(alive_team <= 1)
-		if(alive_solo >= 1)
+		if(alive_solo > 1)
 			return 0
 		return 1
 
