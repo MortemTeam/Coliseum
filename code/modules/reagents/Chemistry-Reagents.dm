@@ -25,7 +25,7 @@
 
 	var/list/neuromod_irritant = list(
 		"Tramadol", "Peridaxon", "Rezadone",
-		"Hyperzine", "Synaptizine",
+		"Inaprovaline", "Hyperzine", "Synaptizine",
 	)
 
 /datum/reagent/New(datum/reagents/holder)

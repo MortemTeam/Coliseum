@@ -440,7 +440,6 @@
 	holder.remove_reagent(/datum/reagent/mindbreaker, 5)
 	M.adjust_hallucination(-10)
 	M.add_chemical_effect(CE_MIND, 2)
-	M.adjustToxLoss(5 * removed) // It used to be incredibly deadly due to an oversight. Not anymore!
 	M.add_chemical_effect(CE_PAINKILLER, 20)
 
 /datum/reagent/alkysine
@@ -827,7 +826,6 @@
 	M.adjustCloneLoss(-20 * removed)
 	M.adjustOxyLoss(-2 * removed)
 	M.heal_organ_damage(20 * removed, 20 * removed)
-	M.adjustToxLoss(-20 * removed)
 	if(M.chem_doses[type] > 3 && ishuman(M))
 		var/mob/living/carbon/human/H = M
 		for(var/obj/item/organ/external/head/h in H.organs)
