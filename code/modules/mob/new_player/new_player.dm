@@ -177,27 +177,12 @@
 			return 1
 
 	if(href_list["late_join"])
-
 		if(GAME_STATE != RUNLEVEL_GAME)
 			to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
 			return
 
-		if (!SSeams.CheckForAccess(client))
-			return
-
-		if(jobban_isbanned(src, "MALE") && jobban_isbanned(src, "FEMALE"))
-			to_chat(src, "<span class='warning'>Only genderqueers allowed.</span>")
-			return
-
-		if(jobban_isbanned(src, "MALE") && client.prefs.gender == MALE)
-			to_chat(src, "<span class='warning'>Only traps allowed.</span>")
-			return
-
-		if(jobban_isbanned(src, "FEMALE") && client.prefs.gender == FEMALE)
-			to_chat(src, "<span class='warning'>No traps allowed.</span>")
-			return
-
-		LateChoices() //show the latejoin job selection menu
+		to_chat(usr, SPAN_WARNING("You will never come in after the game has started!"))
+		return
 
 	if(href_list["manifest"])
 		ViewManifest()

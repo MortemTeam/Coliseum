@@ -36,6 +36,7 @@ area/casino/casino_mainfloor
 /area/casino/casino_hangar
 	name = "\improper Casino Hangar"
 	icon_state = "hangar"
+	base_turf = /turf/simulated/floor/plating
 
 /area/casino/casino_private1
 	name = "\improper Casino Private Room 1"
