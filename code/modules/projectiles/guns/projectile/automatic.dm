@@ -129,9 +129,9 @@
 	fire_sound = 'sound/effects/weapons/gun/fire10.ogg'
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2)
 	slot_flags = SLOT_BELT
-	ammo_type = /obj/item/ammo_casing/c9mm/rubber
+	ammo_type = /obj/item/ammo_casing/c9mm
 	load_method = MAGAZINE
-	magazine_type = /obj/item/ammo_magazine/mc9mmt/rubber
+	magazine_type = /obj/item/ammo_magazine/mc9mmt
 	allowed_magazines = /obj/item/ammo_magazine/mc9mmt
 	one_hand_penalty=1
 

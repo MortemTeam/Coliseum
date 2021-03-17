@@ -19,6 +19,9 @@
 
 /client/MouseDown(object,location,control,params)
 	..()
+	if(findtext(params, "middle"))
+		return
+
 	if(istype(object, /obj/screen))
 		if(istype(object, /obj/screen/click_catcher))
 			var/obj/screen/click_catcher/CC = object
@@ -26,6 +29,7 @@
 		else:
 			return
 
+	to_chat(world, "[params]")
 	mouse_pushed = 1
 	var/mob/living/carbon/human/H = mob
 	if(H && !H.in_throw_mode)

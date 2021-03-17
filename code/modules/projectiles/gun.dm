@@ -10,6 +10,7 @@
 	var/list/settings = list()
 
 	var/burst = 1
+	var/burst_delay = 1
 	var/fire_delay = 1
 
 /datum/firemode/New(obj/item/weapon/gun/gun, list/properties = null)
@@ -28,6 +29,7 @@
 
 /datum/firemode/proc/apply_to(obj/item/weapon/gun/gun)
 	gun.burst = burst
+	gun.burst_delay = burst_delay
 	gun.fire_delay = fire_delay
 	for(var/propname in settings)
 		gun.vars[propname] = settings[propname]
@@ -35,26 +37,26 @@
 /datum/firemode/semiauto
 	name = "Single Shot"
 	burst = 1
-	fire_delay = 0
+	burst_delay = 0
 	settings = list(burst_accuracy=list(), dispersion=list())
 
 /datum/firemode/fullauto
 	name = "Full Auto"
 	burst = 0
-	fire_delay = 0
+	burst_delay = 0
 	settings = list(burst_accuracy=list(0,-1,-1,-1,-2), dispersion=list(0.6, 0.6, 1.0, 1.0, 1.2))
 
 /datum/firemode/fullauto/rpm800
-	fire_delay = 0.8
+	burst_delay = 0.8
 
 /datum/firemode/fullauto/rpm600
-	fire_delay = 1
+	burst_delay = 1
 
 /datum/firemode/fullauto/rpm400
-	fire_delay = 1.5
+	burst_delay = 1.5
 
 /datum/firemode/fullauto/rpm300
-	fire_delay = 2
+	burst_delay = 2
 
 //Parent gun type. Guns are weapons that can be aimed at mobs and act over a distance
 /obj/item/weapon/gun
@@ -128,6 +130,8 @@
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
+
+	firemodes[1].apply_to(src)
 
 /obj/item/weapon/gun/update_twohanding()
 	if(one_hand_penalty)
