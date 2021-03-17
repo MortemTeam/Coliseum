@@ -63,7 +63,6 @@ SUBSYSTEM_DEF(ticker)
 			pregame_timeleft = 60 SECONDS
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
 			bad_modes = list()
-			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby to try again.")
 			return
 		if(CHOOSE_GAMEMODE_REVOTE)
 			revotes_allowed--
