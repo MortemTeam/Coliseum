@@ -1,7 +1,7 @@
 /datum/game_mode/last_stand
 	name = "Royale"
 	config_tag = "royale"
-	required_players = 5
+	required_players = 4
 	round_description = "Just have fun!"
 	extended_round_description = "Survival of the fittest"
 	probability = 1

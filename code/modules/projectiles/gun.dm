@@ -37,7 +37,7 @@
 /datum/firemode/semiauto
 	name = "Single Shot"
 	burst = 1
-	burst_delay = 0
+	fire_delay = 0
 	settings = list(burst_accuracy=list(), dispersion=list())
 
 /datum/firemode/fullauto

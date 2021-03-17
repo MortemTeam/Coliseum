@@ -18,8 +18,9 @@
 	return null
 
 /client/MouseDown(object,location,control,params)
-	..()
-	if(findtext(params, "middle"))
+	var/mob/living/carbon/human/H = mob
+	var/G = H.get_active_hand()
+	if(!H || H.in_throw_mode || findtext(params, "middle") || !istype(G, /obj/item/weapon/gun))
 		return
 
 	if(istype(object, /obj/screen))
@@ -30,15 +31,11 @@
 			return
 
 	mouse_pushed = 1
-	var/mob/living/carbon/human/H = mob
-	if(H && !H.in_throw_mode)
-		var/G = H.get_active_hand()
-		if(istype(G, /obj/item/weapon/gun))
-			var/obj/item/weapon/gun/GUN = G
-			var/dist = get_dist(mouse_target, H)
-			if(GUN && (istype(mouse_target, /turf) || dist > 1))
-				GUN.afterattack(mouse_target, H) // 1 indicates adjacency
-				H.setClickCooldown(1 SECONDS)
+	var/obj/item/weapon/gun/GUN = G
+	var/dist = get_dist(mouse_target, H)
+	if(GUN && (istype(mouse_target, /turf) || dist > 1))
+		GUN.afterattack(mouse_target, H) // 1 indicates adjacency
+		H.setClickCooldown(1 SECONDS)
 
 /client/MouseDrag(over_object, var/atom/src_location, over_location, src_control, over_control, params)
 	src_location = resolve_world_target(src_location)
