@@ -26,9 +26,10 @@
 		if(alive_player[x] > 0)
 			alive_team++
 
-	if(alive_solo <= 1)
-		if(alive_team <= 1)
-			return 1
+	if(alive_team == 0 && alive_solo <=1)
+		return 1
+	if(alive_team == 1 && !alive_solo)
+		return 1
 
 /datum/game_mode/last_stand/special_report()
 	var/list/parts = list()
