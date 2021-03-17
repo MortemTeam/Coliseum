@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/gamemode_vote_results  //Will be a list, in order of preference, of form list(config_tag = number of votes).
 	var/bypass_gamemode_vote = TRUE //Intended for use with admin tools. Will avoid voting and ignore any results.
 
-	var/master_mode = "secret"    //The underlying game mode (so "secret" or the voted mode). Saved to default back to previous round's mode in case the vote failed. This is a config_tag.
+	var/master_mode = "royale"    //The underlying game mode (so "secret" or the voted mode). Saved to default back to previous round's mode in case the vote failed. This is a config_tag.
 	var/datum/game_mode/mode        //The actual gamemode, if selected.
 	var/round_progressing = 1       //Whether the lobby clock is ticking down.
 
@@ -60,7 +60,7 @@ SUBSYSTEM_DEF(ticker)
 		if(CHOOSE_GAMEMODE_SILENT_REDO)
 			return
 		if(CHOOSE_GAMEMODE_RETRY)
-			pregame_timeleft = 15 SECONDS
+			pregame_timeleft = 60 SECONDS
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
 			bad_modes = list()
 			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby to try again.")
