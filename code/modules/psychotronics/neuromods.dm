@@ -66,7 +66,6 @@
 /datum/neuromod/increase_speed/Handle(mob/living/user)
 	if (!user.additional_speed)
 		user.additional_speed = 1
-		user.mutations.Add(mRun)
 
 /* Morph */
 /datum/neuromod/morph

@@ -30,9 +30,12 @@
 	if(icon_state == initial(icon_state))
 		src.icon_state = "[icon_state]_up"
 		to_chat(user, "You raise the visor on the [src].")
+		body_parts_covered  |= FACE
 	else
 		icon_state = initial(icon_state)
 		to_chat(user, "You lower the visor on the [src].")
+		body_parts_covered ~= FACE
+
 	add_fingerprint(user)
 	update_clothing_icon()
 
