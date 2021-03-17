@@ -29,11 +29,13 @@
 	mouse_pushed = 1
 	var/mob/living/carbon/human/H = mob
 	if(H && !H.in_throw_mode)
-		var/obj/item/weapon/gun/G = H.get_active_hand()
-		var/dist = get_dist(mouse_target, H)
-		if(G && (istype(mouse_target, /turf) || dist > 1))
-			G.afterattack(mouse_target, H) // 1 indicates adjacency
-			H.setClickCooldown(2 SECONDS)
+		var/G = H.get_active_hand()
+		if(istype(G, /obj/item/weapon/gun))
+			var/obj/item/weapon/gun/GUN = G
+			var/dist = get_dist(mouse_target, H)
+			if(GUN && (istype(mouse_target, /turf) || dist > 1))
+				GUN.afterattack(mouse_target, H) // 1 indicates adjacency
+				H.setClickCooldown(1 SECONDS)
 
 /client/MouseDrag(over_object, var/atom/src_location, over_location, src_control, over_control, params)
 	src_location = resolve_world_target(src_location)

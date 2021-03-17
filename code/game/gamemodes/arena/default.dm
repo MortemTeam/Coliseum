@@ -20,7 +20,7 @@
 	var/alive_solo = 0
 	for(var/x in alive_player)
 		if(x == "Gladiator")
-			alive_solo++
+			alive_solo += alive_player[x]
 			continue
 
 		if(alive_player[x] > 0)

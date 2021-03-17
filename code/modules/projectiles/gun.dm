@@ -9,8 +9,8 @@
 	var/name = "default"
 	var/list/settings = list()
 
-	var/burst
-	var/fire_delay
+	var/burst = 1
+	var/fire_delay = 1
 
 /datum/firemode/New(obj/item/weapon/gun/gun, list/properties = null)
 	..()
