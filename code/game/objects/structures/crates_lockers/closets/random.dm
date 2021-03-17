@@ -118,9 +118,8 @@
     icon_opened = "weaponopen"
     random_list = list(
         /obj/item/weapon/gun/energy/crossbow = 5,
-        /obj/item/weapon/melee/energy/sword = 5,
+        /obj/item/weapon/melee/energy/sword/one_hand = 5,
         /obj/item/weapon/gun/projectile/automatic/sts35 = 5,
-        /obj/item/weapon/gun/energy/pulse_rifle = 5,
         /obj/item/weapon/gun/magnetic/railgun/flechette = 5,
         /obj/item/weapon/gun/magnetic/railgun = 5,
         /obj/item/weapon/gun/projectile/magnum_pistol = 5,
