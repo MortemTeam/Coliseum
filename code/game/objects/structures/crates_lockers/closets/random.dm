@@ -103,7 +103,6 @@
         /obj/item/device/chameleon = 10,
 		/obj/item/device/chameleonholo = 10,
         /obj/item/device/flashlight/flashdark = 10,
-        /obj/item/weapon/storage/firstaid/combat = 10,
         /obj/item/weapon/defibrillator/compact/combat/loaded = 10,
         /obj/item/bodybag/cryobag = 10,
         /obj/item/clothing/suit/armor/reactive = 10,

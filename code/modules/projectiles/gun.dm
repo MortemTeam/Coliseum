@@ -11,7 +11,7 @@
 
 	var/burst = 1
 	var/burst_delay = 1
-	var/fire_delay = 1
+	var/fire_delay = 6
 
 /datum/firemode/New(obj/item/weapon/gun/gun, list/properties = null)
 	..()
