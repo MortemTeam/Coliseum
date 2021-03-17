@@ -29,7 +29,6 @@
 		else:
 			return
 
-	to_chat(world, "[params]")
 	mouse_pushed = 1
 	var/mob/living/carbon/human/H = mob
 	if(H && !H.in_throw_mode)
