@@ -76,7 +76,7 @@
 			for(var/mob/new_player/player in GLOB.player_list)
 				var/datum/preferences/prefs = player.client.prefs
 				totalPlayers++
-				if(player.client && prefs && prefs.job_low)
+				if(player.client && prefs && prefs.job_low.len)
 					highjob = prefs.job_low[1]
 					if(prefs.player_alt_titles.len)
 						highjob = prefs.player_alt_titles[highjob]
