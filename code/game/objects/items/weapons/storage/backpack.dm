@@ -154,7 +154,7 @@
 
 /obj/item/weapon/storage/backpack/dufflebag/New()
 	..()
-	slowdown_per_slot[slot_back] = 3
+	slowdown_per_slot[slot_back] = 1
 	slowdown_per_slot[slot_r_hand] = 1
 	slowdown_per_slot[slot_l_hand] = 1
 
@@ -162,10 +162,6 @@
 	name = "black dufflebag"
 	desc = "A large dufflebag for holding extra tactical supplies."
 	icon_state = "duffle_syndie"
-
-/obj/item/weapon/storage/backpack/dufflebag/syndie/New()
-	..()
-	slowdown_per_slot[slot_back] = 1
 
 /obj/item/weapon/storage/backpack/dufflebag/syndie/med
 	name = "medical dufflebag"
@@ -408,7 +404,7 @@
 	name = "security messenger bag"
 	desc = "A tactical backpack worn over one shoulder. This one is in Security colors."
 	icon_state = "courierbagsec"
-	
+
 //Smuggler's satchel
 /obj/item/weapon/storage/backpack/satchel/flat
 	name = "\improper Smuggler's satchel"
