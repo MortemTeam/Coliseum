@@ -92,8 +92,8 @@
 
 	watchlist = new /datum/watchlist
 
-	var/list/lobby_music_tracks = subtypesof(/lobby_music)
-	var/lobby_music_type = /lobby_music
+	var/list/lobby_music_tracks = subtypesof(/lobby_music/arena)
+	var/lobby_music_type = /lobby_music/arena
 	if(lobby_music_tracks.len)
 		lobby_music_type = pick(lobby_music_tracks)
 	GLOB.lobby_music = new lobby_music_type()

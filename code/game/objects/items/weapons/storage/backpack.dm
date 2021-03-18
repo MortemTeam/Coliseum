@@ -193,6 +193,23 @@
 	desc = "A large dufflebag for holding extra tools and supplies."
 	icon_state = "duffle_eng"
 
+//FOR GLADIATORS
+
+/obj/item/weapon/storage/backpack/dufflebag/red
+	name = "red dufflebag"
+	icon_state = "redteam"
+
+/obj/item/weapon/storage/backpack/dufflebag/green
+	name = "green dufflebag"
+	icon_state = "greenteam"
+
+/obj/item/weapon/storage/backpack/dufflebag/blue
+	name = "blue dufflebag"
+	icon_state = "blueteam"
+
+/obj/item/weapon/storage/backpack/dufflebag/noteam
+	name = "just dufflebag"
+
 /*
  * Satchel Types
  */

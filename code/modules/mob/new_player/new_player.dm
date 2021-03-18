@@ -165,7 +165,7 @@
 
 			if(client.prefs.be_random_name)
 				client.prefs.real_name = random_name(client.prefs.gender)
-			observer.real_name = client.prefs.real_name
+			observer.real_name = client.key
 			observer.SetName(observer.real_name)
 			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
 				observer.verbs -= /mob/observer/ghost/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
@@ -418,6 +418,7 @@
 
 		matchmaker.do_matchmaking()
 	log_and_message_admins("has joined the round as [character.mind.assigned_role].", character)
+	client.deadmin_self()
 	qdel(src)
 
 /mob/new_player/proc/AnnounceCyborg(mob/living/character, rank, join_message)
