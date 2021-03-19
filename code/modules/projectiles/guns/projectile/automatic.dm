@@ -15,6 +15,8 @@
 	ammo_type = /obj/item/ammo_casing/c9mm
 	multi_aim = 1
 	burst_delay = 2
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 
 	//machine pistol, easier to one-hand with
 	firemodes = list(
@@ -47,7 +49,7 @@
 /obj/item/weapon/gun/projectile/automatic/machine_pistol/mini_uzi
 	name = ".45 machine pistol"
 	desc = "The Lumoco Arms MP6 Vesper, A fairly common machine pistol. Sometimes refered to as an 'uzi' by the backwater spacers it is often associated with. Uses .45 rounds."
-	icon_state = "saber"
+	icon_state = "mac"
 	item_state = "mpistolen"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	firemodes = list(
@@ -58,9 +60,9 @@
 /obj/item/weapon/gun/projectile/automatic/machine_pistol/mini_uzi/update_icon()
 	..()
 	if(ammo_magazine)
-		icon_state = "saber"
+		icon_state = "mac"
 	else
-		icon_state = "saber-empty"
+		icon_state = "mac-empty"
 
 /obj/item/weapon/gun/projectile/automatic/c20r
 	name = "10mm submachine gun"
@@ -78,8 +80,6 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a10mm
 	allowed_magazines = /obj/item/ammo_magazine/a10mm
-	auto_eject = 1
-	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	one_hand_penalty = 1
 
 /obj/item/weapon/gun/projectile/automatic/c20r/update_icon()
@@ -159,8 +159,6 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a762
 	allowed_magazines = /obj/item/ammo_magazine/a762
-	auto_eject = 1
-	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	one_hand_penalty = 5
 	burst_delay = 4
 	wielded_item_state = "z8carbine-wielded"

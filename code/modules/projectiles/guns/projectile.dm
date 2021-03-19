@@ -171,7 +171,7 @@
 			SPAN_NOTICE("You eject [ammo_magazine] from [src]."))
 		else
 			user.put_in_hands(ammo_magazine)
-			user.visible_message("[user] removes [ammo_magazine] from [src].", 
+			user.visible_message("[user] removes [ammo_magazine] from [src].",
 			SPAN_NOTICE("You remove [ammo_magazine] from [src]."))
 		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 		ammo_magazine.update_icon()
@@ -212,19 +212,18 @@
 	else
 		return ..()
 
-/obj/item/weapon/gun/projectile/afterattack(atom/A, mob/living/user)
+/obj/item/weapon/gun/projectile/handle_click_empty(mob/user)
 	..()
-	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
-		ammo_magazine.loc = get_turf(src.loc)
-		user.visible_message(
-			"[ammo_magazine] falls out and clatters on the floor!",
-			"<span class='notice'>[ammo_magazine] falls out and clatters on the floor!</span>"
-			)
-		if(auto_eject_sound)
-			playsound(user, auto_eject_sound, 40, 1)
-		ammo_magazine.update_icon()
-		ammo_magazine = null
-		update_icon() //make sure to do this after unsetting ammo_magazine
+	ammo_magazine.loc = get_turf(src.loc)
+	user.visible_message(
+		"[ammo_magazine] falls out and clatters on the floor!",
+		"<span class='notice'>[ammo_magazine] falls out and clatters on the floor!</span>"
+		)
+	if(auto_eject_sound)
+		playsound(user, auto_eject_sound, 40, 1)
+	ammo_magazine.update_icon()
+	ammo_magazine = null
+	update_icon() //make sure to do this after unsetting ammo_magazine
 
 /obj/item/weapon/gun/projectile/examine(mob/user)
 	. = ..()

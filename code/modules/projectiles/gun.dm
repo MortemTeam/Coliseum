@@ -179,8 +179,6 @@
 	return 1
 
 /obj/item/weapon/gun/proc/burst_check(var/shot_count, var/client/C)
-	if(shot_count == 1)
-		return TRUE
 	if(!C || !C.mouse_pushed)
 		return FALSE
 	if(!burst)
@@ -271,7 +269,7 @@
 
 //called if there was no projectile to shoot
 /obj/item/weapon/gun/proc/handle_click_empty(mob/user)
-	if (user)
+	if(user)
 		user.visible_message("*click click*", "<span class='danger'>*click*</span>")
 	else
 		src.visible_message("*click click*")

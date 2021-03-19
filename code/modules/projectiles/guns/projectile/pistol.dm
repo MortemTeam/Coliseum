@@ -5,6 +5,8 @@
 	allowed_magazines = /obj/item/ammo_magazine/c45m
 	icon_state = "colt"
 	caliber = ".45"
+	auto_eject = 1
+	auto_eject_sound = 'sound/weapons/empty.ogg'
 	fire_sound = 'sound/weapons/gun_colt2.ogg'
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	load_method = MAGAZINE
@@ -50,8 +52,6 @@
 	item_state = "vp78"
 	magazine_type = /obj/item/ammo_magazine/c45m
 	allowed_magazines = /obj/item/ammo_magazine/c45m
-	auto_eject = 1
-	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	caliber = ".45"
 	fire_delay = 6.5
 	load_method = MAGAZINE
@@ -108,7 +108,6 @@
 	item_state = "c45sec"
 	magazine_type = /obj/item/ammo_magazine/c45m/stun
 	allowed_magazines = /obj/item/ammo_magazine/c45m
-	auto_eject = 1
 	caliber = ".45"
 	accuracy = -0.35
 	fire_delay = 5.5
@@ -193,8 +192,6 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/a75
 	fire_delay = 25
-	auto_eject = 1
-	auto_eject_sound = 'sound/weapons/smg_empty_alarm.ogg'
 	fire_sound = 'sound/effects/weapons/gun/fire3.ogg'
 
 /obj/item/weapon/gun/projectile/gyropistol/update_icon()

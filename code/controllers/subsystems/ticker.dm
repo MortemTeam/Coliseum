@@ -299,6 +299,7 @@ Helpers
 /datum/controller/subsystem/ticker/proc/collect_minds()
 	for(var/mob/living/player in GLOB.player_list)
 		if(player.mind)
+			player.client.deadmin_self()
 			minds += player.mind
 
 /datum/controller/subsystem/ticker/proc/equip_characters()

@@ -1,3 +1,8 @@
+/datum/firemode/fullauto/pump
+	burst = 0
+	burst_delay = 3
+	fire_delay = 3
+
 /obj/item/weapon/gun/projectile/shotgun/pump
 	name = "shotgun"
 	desc = "The mass-produced W-T Remmington 29x shotgun is a favourite of police and security forces on many worlds. Useful for sweeping alleys."
@@ -27,9 +32,7 @@
 	return null
 
 /obj/item/weapon/gun/projectile/shotgun/pump/attack_self(mob/living/user as mob)
-	if(world.time > recentpump + 10)
-		recentpump = world.time
-		pump(user)
+	pump(user)
 
 /obj/item/weapon/gun/projectile/shotgun/pump/proc/pump(mob/M as mob)
 	playsound(M, "shotgun_pump_in", rand(45, 60), FALSE)
@@ -57,6 +60,17 @@
 	max_shells = 7 //match the ammo box capacity, also it can hold a round in the chamber anyways, for a total of 8.
 	ammo_type = /obj/item/ammo_casing/shotgun
 	one_hand_penalty = 3 //a little heavier than the regular shotgun
+
+/obj/item/weapon/gun/projectile/shotgun/pump/combat/auto
+	icon_state = "combat-shotgun"
+	item_state = "cshotgun"
+	firemodes = list(
+		/datum/firemode/fullauto/pump,
+	)
+
+/obj/item/weapon/gun/projectile/shotgun/pump/combat/auto/handle_post_fire(mob/user, atom/target, pointblank=0, reflex=0)
+	..()
+	pump(user)
 
 /obj/item/weapon/gun/projectile/shotgun/pump/combat/hos
 	name = "KS-40"

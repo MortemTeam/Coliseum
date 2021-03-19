@@ -208,6 +208,7 @@
 /* "Rifle" rounds */
 
 /obj/item/projectile/bullet/rifle
+	icon_state = "bulletnew"
 	armor_penetration = 25
 	penetrating = 1
 
