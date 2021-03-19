@@ -184,7 +184,7 @@
 		var/decl/hierarchy/rcd_mode/rcdm = child
 		if(!rcdm.can_handle_work(rcd, target))
 			continue
-		if(!rcd.useResource(rcdm.cost, user))
+		if(rcd.stored_matter < rcdm.cost)
 			to_chat(user, "<span class='warning'>Insufficient resources.</span>")
 			return FALSE
 
@@ -197,6 +197,7 @@
 				return FALSE
 
 		rcdm.do_handle_work(target)
+		rcd.useResource(rcdm.cost, user)
 		playsound(get_turf(user), 'sound/items/Deconstruct.ogg', 50, 1)
 		return TRUE
 
