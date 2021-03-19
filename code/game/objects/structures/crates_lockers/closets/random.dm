@@ -165,6 +165,7 @@
         /obj/item/clothing/mask/pig = 10,
 		/obj/item/clothing/suit/armor/hos/jensen = 10,
 		/obj/item/clothing/head/HoS/german = 10,
+		/obj/item/weapon/towel = 10,
 
         /obj/item/clothing/glasses/sunglasses = 30,
         /obj/item/clothing/head/cowboy_hat = 30,
