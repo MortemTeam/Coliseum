@@ -492,7 +492,7 @@ its easier to just keep the beam vertical.
 	user.visible_message("<span class='warning'>\The [user] starts climbing onto \the [src]!</span>")
 	climbers |= user
 
-	if(!do_after(user,(issmall(user) ? 30 : 50), src))
+	if(!do_after(user, 10, src))
 		climbers -= user
 		return
 
