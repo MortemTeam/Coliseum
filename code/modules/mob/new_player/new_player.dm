@@ -75,15 +75,12 @@
 			for(var/mob/new_player/player in GLOB.player_list)
 				var/datum/preferences/prefs = player.client.prefs
 				totalPlayers++
-				if(player.client && prefs && prefs.job_low.len)
-					highjob = prefs.job_low[1]
-					if(prefs.player_alt_titles.len)
-						highjob = prefs.player_alt_titles[highjob]
+				if(player.client && prefs && prefs.team)
 					if(player.ready)
 						totalPlayersReady++
 						if(!(prefs.spawnpoint in spawnpoints))
 							spawnpoints[prefs.spawnpoint] = list()
-						spawnpoints[prefs.spawnpoint] += "[player.key] ([highjob])"
+						spawnpoints[prefs.spawnpoint] += "[player.key] ([prefs.team])"
 
 			for(var/sp in spawnpoints)
 				stat(sp, null)
@@ -494,12 +491,8 @@
 
 	new_character.lastarea = get_area(spawn_turf)
 
-	highjob = client.prefs.job_low[1]
-	if(client.prefs.player_alt_titles.len)
-		highjob = client.prefs.player_alt_titles[highjob]
-
 	new_character.real_name = client.key
-	new_character.highjob = highjob
+	new_character.team = client.prefs.team
 	sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))// MAD JAMS cant last forever yo
 
 	if(mind)

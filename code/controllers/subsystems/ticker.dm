@@ -285,14 +285,11 @@ Helpers
 /datum/controller/subsystem/ticker/proc/create_characters()
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(player && player.ready && player.mind)
-			if(player.mind.assigned_role=="AI")
-				player.close_spawn_windows()
-				player.AIize()
-			else if(!player.mind.assigned_role)
-				continue
-			else
-				if(player.create_character())
-					qdel(player)
+			player.mind.assigned_role = "Gladiator"
+			player.mind.role_alt_title = player.client.prefs.team
+			if(player.create_character())
+				qdel(player)
+
 		else if(player && !player.ready)
 			player.new_player_panel()
 

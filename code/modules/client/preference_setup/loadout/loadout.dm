@@ -201,10 +201,9 @@ var/list/gear_datums = list()
 	var/datum/loadout_category/LC = loadout_categories[current_tab]
 	var/list/selected_jobs = new
 	if(job_master)
-		for(var/job_title in (pref.job_medium|pref.job_low|pref.job_high))
-			var/datum/job/J = job_master.occupations_by_title[job_title]
-			if(J)
-				dd_insertObjectList(selected_jobs, J)
+		var/datum/job/J = job_master.occupations_by_title[pref.team]
+		if(J)
+			dd_insertObjectList(selected_jobs, J)
 
 	var/purchased_gears = ""
 	var/paid_gears = ""
@@ -299,7 +298,7 @@ var/list/gear_datums = list()
 					. += "<font color='#808080'>[J.title]</font>"
 			. += "</i>"
 			. += "<br>"
-		
+
 		if(selected_gear.whitelisted)
 			. += "<b>Has species restrictions!</b>"
 			. += "<br>"
@@ -549,7 +548,7 @@ var/list/gear_datums = list()
 	ASSERT(G)
 	if(!G.path)
 		return FALSE
-	
+
 	if(G.allowed_roles)
 		ASSERT(job_master)
 		var/list/jobs = new
@@ -565,10 +564,10 @@ var/list/gear_datums = list()
 				break
 		if(!job_ok)
 			return FALSE
-	
+
 	if(G.whitelisted && !(pref.species in G.whitelisted))
 		return FALSE
-		
+
 	return TRUE
 
 /datum/category_item/player_setup_item/loadout/proc/gear_allowed_to_equip(datum/gear/G, mob/user)

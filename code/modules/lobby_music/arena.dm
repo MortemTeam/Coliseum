@@ -13,6 +13,16 @@
 	title = "Metviy Anarchist"
 	song = "sound/music/arena/KiSH-MertviyAnarchist.mp3"
 
+/lobby_music/arena/anarchist
+	artist = "Pnevmoslon"
+	title = "Catastroficheskiy Pizdec"
+	song = "sound/music/arena/Pnevmoslon-Catastroficheskiy.mp3"
+
+/lobby_music/arena/listiki
+	artist = "2rbina 2rista"
+	title = "Listiki"
+	song = "sound/music/arena/2rbina2rista-Listiki.mp3"
+
 /lobby_music/arena/power
 	artist = "Prayers"
 	title = "Power Trip"

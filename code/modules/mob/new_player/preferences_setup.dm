@@ -55,16 +55,13 @@
 	var/datum/job/previewJob
 	if(equip_preview_mob && job_master)
 		// Determine what job is marked as 'High' priority, and dress them up as such.
-		for(var/datum/job/job in job_master.occupations)
-			if(job.title in job_low)
-				previewJob = job
-				break
+		previewJob = job_master.occupations_by_title[team]
 	else
 		return
 
 	if((equip_preview_mob & EQUIP_PREVIEW_JOB) && previewJob)
 		mannequin.job = previewJob.title
-		previewJob.equip_preview(mannequin, player_alt_titles[previewJob.title], mannequin.char_branch)
+		previewJob.equip_preview(mannequin, team, mannequin.char_branch)
 		update_icon = TRUE
 
 	if((equip_preview_mob & EQUIP_PREVIEW_LOADOUT) && !(previewJob && (equip_preview_mob & EQUIP_PREVIEW_JOB) && (previewJob.type == /datum/job/ai || previewJob.type == /datum/job/cyborg)))

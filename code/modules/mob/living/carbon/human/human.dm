@@ -7,7 +7,7 @@
 
 	throw_range = 4
 	var/candrop = 1
-	var/highjob
+	var/team
 
 	var/equipment_slowdown = -1
 	var/list/hud_list[10]

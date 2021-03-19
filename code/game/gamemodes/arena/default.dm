@@ -1,7 +1,7 @@
 /datum/game_mode/last_stand
 	name = "Royale"
 	config_tag = "royale"
-	required_players = 4
+	required_players = 1
 	round_description = "Just have fun!"
 	extended_round_description = "Survival of the fittest"
 	probability = 1
@@ -11,19 +11,19 @@
 	..()
 	for(var/x in GLOB.human_mob_list)
 		var/mob/living/carbon/human/h = x
-		if(!(h.highjob in player_team))
-			player_team[h.highjob] = list()
-		player_team[h.highjob][h.real_name] = h
+		if(!(h.team in player_team))
+			player_team[h.team] = list()
+		player_team[h.team][h.real_name] = h
 
 /datum/game_mode/last_stand/check_finished()
 	var/list/alive_player = list()
 	for(var/x in GLOB.human_mob_list)
 		var/mob/living/carbon/human/h = x
 		if(h.stat != DEAD)
-			if(!(h.highjob in alive_player))
-				alive_player[h.highjob] = 0
+			if(!(h.team in alive_player))
+				alive_player[h.team] = 0
 
-			alive_player[h.highjob] += 1
+			alive_player[h.team] += 1
 
 	var/alive_team = 0
 	var/alive_solo = 0
