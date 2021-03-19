@@ -150,32 +150,29 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 		A.fire_act(air_contents, air_contents.temperature, air_contents.volume)
 
 	//spread
-	for(var/direction in GLOB.cardinal)
-		var/turf/simulated/enemy_tile = get_step(my_tile, direction)
-
+	for(var/turf/simulated/enemy_tile in oview(src, 5))
 		if(istype(enemy_tile))
-			if(my_tile.open_directions & direction) //Grab all valid bordering tiles
-				if(!enemy_tile.zone || enemy_tile.fire)
-					continue
+			if(!enemy_tile.zone || enemy_tile.fire)
+				continue
 
-				//if(!enemy_tile.zone.fire_tiles.len) TODO - optimize
-				var/datum/gas_mixture/acs = enemy_tile.return_air()
-				var/obj/effect/decal/cleanable/liquid_fuel/liquid = locate() in enemy_tile
-				if(!acs || !acs.check_combustability(liquid))
-					continue
+			//if(!enemy_tile.zone.fire_tiles.len) TODO - optimize
+			var/datum/gas_mixture/acs = enemy_tile.return_air()
+			var/obj/effect/decal/cleanable/liquid_fuel/liquid = locate() in enemy_tile
+			if(!acs || !acs.check_combustability(liquid))
+				continue
 
-				//If extinguisher mist passed over the turf it's trying to spread to, don't spread and
-				//reduce firelevel.
-				if(enemy_tile.fire_protection > world.time-30)
-					firelevel -= 1.5
-					continue
+			//If extinguisher mist passed over the turf it's trying to spread to, don't spread and
+			//reduce firelevel.
+			if(enemy_tile.fire_protection > world.time-30)
+				firelevel -= 1.5
+				continue
 
-				//Spread the fire.
-				if(my_tile.CanPass(src, enemy_tile) && enemy_tile.CanPass(src, my_tile))
-					enemy_tile.create_fire(firelevel)
+			//Spread the fire.
+			if(my_tile.CanPass(src, enemy_tile) && enemy_tile.CanPass(src, my_tile))
+				enemy_tile.create_fire(firelevel)
 
-			else
-				enemy_tile.adjacent_fire_act(loc, air_contents, air_contents.temperature, air_contents.volume)
+		else
+			enemy_tile.adjacent_fire_act(loc, air_contents, air_contents.temperature, air_contents.volume)
 
 	animate(src, color = fire_color(air_contents.temperature), 5)
 	set_light(l_color = color)
