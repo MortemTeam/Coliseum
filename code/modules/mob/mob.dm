@@ -717,12 +717,14 @@
 	else
 		lying = incapacitated(INCAPACITATION_KNOCKDOWN)
 
-	if(lying)
-		set_density(0)
+	if(stunned || paralysis || sleeping)
 		if(l_hand)
 			unEquip(l_hand)
 		if(r_hand)
 			unEquip(r_hand)
+
+	if(lying)
+		set_density(0)
 	else
 		set_density(initial(density))
 	reset_layer()

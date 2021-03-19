@@ -41,6 +41,30 @@
 /obj/random/single/spawn_choices()
 	return list(ispath(spawn_object) ? spawn_object : text2path(spawn_object))
 
+/obj/random/arena_closet
+	name = "random arena closet"
+	desc = "This is a random arena closet."
+	icon = 'icons/obj/closet.dmi'
+	icon_state = "syndicate"
+
+/obj/random/arena_closet/spawn_choices()
+	return list(
+		/obj/structure/closet/random/engineering = 1,
+		/obj/structure/closet/random/medical = 1,
+		/obj/structure/closet/random/science = 1,
+		/obj/structure/closet/random/weapon = 1,
+		/obj/structure/closet/random/trash = 1,
+	)
+
+/obj/random/zippo
+	name = "random zippo"
+	desc = "This is a random zippo."
+	icon = 'icons/obj/zippos.dmi'
+	icon_state = "zippo"
+
+/obj/random/zippo/spawn_choices()
+	return typesof(/obj/item/weapon/flame/lighter/zippo)
+
 /obj/random/tool
 	name = "random tool"
 	desc = "This is a random tool."

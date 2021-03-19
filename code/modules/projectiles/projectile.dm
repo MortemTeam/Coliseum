@@ -203,13 +203,10 @@
 
 	var/result = PROJECTILE_FORCE_MISS
 	if(hit_zone)
-		if(hit_zone in list(BP_L_FOOT, BP_R_FOOT, BP_L_HAND, BP_R_HAND))
-			result = PROJECTILE_CONTINUE
-		else:
-			def_zone = hit_zone //set def_zone, so if the projectile ends up hitting someone else later (to be implemented), it is more likely to hit the same part
-			if(!target_mob.aura_check(AURA_TYPE_BULLET, src,def_zone))
-				return 1
-			result = target_mob.bullet_act(src, def_zone)
+		def_zone = hit_zone //set def_zone, so if the projectile ends up hitting someone else later (to be implemented), it is more likely to hit the same part
+		if(!target_mob.aura_check(AURA_TYPE_BULLET, src,def_zone))
+			return 1
+		result = target_mob.bullet_act(src, def_zone)
 
 	if(result == PROJECTILE_FORCE_MISS)
 		if(!silenced)

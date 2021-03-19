@@ -163,8 +163,6 @@
 /obj/item/weapon/reagent_containers/glass/rag/proc/ignite()
 	if(on_fire)
 		return
-	if(!can_ignite())
-		return
 
 	//also copied from matches
 	if(reagents.get_reagent_amount(/datum/reagent/toxin/plasma)) // the plasma explodes when exposed to fire
@@ -196,10 +194,6 @@
 	update_icon()
 
 /obj/item/weapon/reagent_containers/glass/rag/Process()
-	if(!can_ignite())
-		visible_message("<span class='warning'>\The [src] burns out.</span>")
-		extinguish()
-
 	//copied from matches
 	if(isliving(loc))
 		var/mob/living/M = loc

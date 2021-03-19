@@ -328,7 +328,7 @@ meteor_act
 						if(!stat || (stat && !paralysis))
 							visible_message(SPAN("danger", "[src] [species.knockout_message]"))
 							custom_pain("Your head's definitely gonna hurt tomorrow.", 30, affecting = affecting)
-						apply_effect((I.mod_weight*15), PARALYZE, (blocked/2))
+						apply_effect((I.mod_weight*2.5), STUN, (blocked/2))
 					else
 						if(prob(effective_force))
 							src.visible_message(SPAN("danger", "[src] looks momentarily disoriented."), SPAN("danger", "You see stars."))
@@ -410,7 +410,7 @@ meteor_act
 					if(!stat || (stat && !paralysis))
 						visible_message(SPAN("danger", "[src] [species.knockout_message]"))
 						custom_pain("Your head's <B>definitely</B> gonna hurt tomorrow.", 30, affecting = affecting)
-						apply_effect((I.mod_weight*20), PARALYZE, (blocked/2))
+						apply_effect((I.mod_weight*5), STUN, (blocked/2))
 				else
 					if(prob(effective_force))
 						visible_message(SPAN("danger", "[src] looks momentarily disoriented."), SPAN("danger", "You see stars."))

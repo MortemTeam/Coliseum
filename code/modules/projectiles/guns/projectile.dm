@@ -214,16 +214,17 @@
 
 /obj/item/weapon/gun/projectile/handle_click_empty(mob/user)
 	..()
-	ammo_magazine.loc = get_turf(src.loc)
-	user.visible_message(
-		"[ammo_magazine] falls out and clatters on the floor!",
-		"<span class='notice'>[ammo_magazine] falls out and clatters on the floor!</span>"
+	if(auto_eject && ammo_magazine && ammo_magazine.stored_ammo && !ammo_magazine.stored_ammo.len)
+		ammo_magazine.loc = get_turf(src.loc)
+		user.visible_message(
+			"[ammo_magazine] falls out and clatters on the floor!",
+			"<span class='notice'>[ammo_magazine] falls out and clatters on the floor!</span>"
 		)
-	if(auto_eject_sound)
-		playsound(user, auto_eject_sound, 40, 1)
-	ammo_magazine.update_icon()
-	ammo_magazine = null
-	update_icon() //make sure to do this after unsetting ammo_magazine
+		if(auto_eject_sound)
+			playsound(user, auto_eject_sound, 40, 1)
+		ammo_magazine.update_icon()
+		ammo_magazine = null
+		update_icon() //make sure to do this after unsetting ammo_magazine
 
 /obj/item/weapon/gun/projectile/examine(mob/user)
 	. = ..()
