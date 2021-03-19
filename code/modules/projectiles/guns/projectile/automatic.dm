@@ -20,7 +20,6 @@
 
 	//machine pistol, easier to one-hand with
 	firemodes = list(
-		/datum/firemode/semiauto,
 		/datum/firemode/fullauto/rpm400,
 	)
 
@@ -53,8 +52,7 @@
 	item_state = "mpistolen"
 	origin_tech = list(TECH_COMBAT = 5, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
 	firemodes = list(
-		/datum/firemode/semiauto,
-		/datum/firemode/fullauto/rpm800,
+		/datum/firemode/fullauto/rpm600,
 	)
 
 /obj/item/weapon/gun/projectile/automatic/machine_pistol/mini_uzi/update_icon()
@@ -237,7 +235,7 @@
 	//LMG, better sustained fire accuracy than assault rifles (comparable to SMG), higer move delay and one-handing penalty
 	//No single-shot or 3-round-burst modes since using this weapon should come at a cost to flexibility.
 	firemodes = list(
-		/datum/firemode/fullauto/rpm600,
+		/datum/firemode/fullauto/rpm300,
 	)
 
 	var/cover_open = 0
