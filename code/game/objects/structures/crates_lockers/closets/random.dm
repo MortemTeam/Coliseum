@@ -124,6 +124,7 @@
         /obj/item/weapon/gun/projectile/magnum_pistol = 5,
 		/obj/item/weapon/gun/projectile/automatic/l6_saw = 5,
 		/obj/item/weapon/gun/projectile/revolver = 5,
+		/obj/item/weapon/gun/projectile/shotgun/pump/combat/auto = 5,
 
         /obj/item/weapon/grenade/smokebomb = 10,
 		/obj/item/weapon/grenade/chem_grenade/teargas = 10,
