@@ -9,6 +9,10 @@
 		reagents.add_reagent(reagent, reagents_to_fill[reagent])
 	update_icon()
 
+/obj/item/weapon/reagent_containers/glass/bottle/arena/dylovene
+    name = "dylovene bottle"
+    reagents_to_fill = list(/datum/reagent/dylovene = 20)
+
 /obj/item/weapon/reagent_containers/glass/bottle/arena/tramadol
     name = "tramadol bottle"
     reagents_to_fill = list(/datum/reagent/tramadol = 20)

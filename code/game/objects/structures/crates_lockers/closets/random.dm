@@ -49,6 +49,8 @@
         /obj/item/weapon/reagent_containers/glass/bottle/arena/bicaridine = 20,
         /obj/item/weapon/reagent_containers/glass/bottle/arena/dermaline = 20,
         /obj/item/weapon/reagent_containers/glass/bottle/arena/dexalinplus = 20,
+		/obj/item/weapon/reagent_containers/glass/bottle/arena/dermaline = 20,
+        /obj/item/weapon/reagent_containers/glass/bottle/arena/dylovene = 20,
         /obj/item/weapon/reagent_containers/glass/bottle/arena/tricordrazine = 20,
         /obj/item/weapon/reagent_containers/glass/bottle/arena/peridaxon = 20,
 		/obj/item/weapon/reagent_containers/glass/bottle/arena/hyperzine = 20,

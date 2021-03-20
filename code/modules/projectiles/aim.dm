@@ -36,9 +36,10 @@
 
 	mouse_pushed = 1
 	var/obj/item/weapon/gun/GUN = G
-	//var/dist = get_dist(mouse_target, H)
-	GUN.afterattack(mouse_target, H) // 1 indicates adjacency
-	H.setClickCooldown(1 SECONDS)
+	var/dist = get_dist(mouse_target, H)
+	if(GUN && (istype(mouse_target, /turf) || dist >= 1))
+		GUN.afterattack(mouse_target, H) // 1 indicates adjacency
+		H.setClickCooldown(1 SECONDS)
 
 /client/MouseDrag(over_object, var/atom/src_location, over_location, src_control, over_control, params)
 	src_location = resolve_world_target(src_location)
