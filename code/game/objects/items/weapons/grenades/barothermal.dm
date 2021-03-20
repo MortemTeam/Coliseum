@@ -7,7 +7,7 @@
 
 /obj/item/weapon/grenade/barothermal/detonate()
 	var/turf/T = get_turf(src)
-	var/datum/reagents/R = new(to_splash)
+	var/datum/reagents/R = new(to_splash, src)
 	R.add_reagent(/datum/reagent/fuel, to_splash)
 	R.splash(T, to_splash, min_spill=4, max_spill=5)
 	T.hotspot_expose(700,125)
