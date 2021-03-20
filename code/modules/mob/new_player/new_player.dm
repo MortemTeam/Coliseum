@@ -491,6 +491,7 @@
 
 	new_character.lastarea = get_area(spawn_turf)
 
+	client.prefs.copy_to(new_character)
 	new_character.real_name = client.key
 	new_character.team = client.prefs.team
 	sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))// MAD JAMS cant last forever yo

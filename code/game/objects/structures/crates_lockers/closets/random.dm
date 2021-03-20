@@ -20,17 +20,18 @@
     random_list = list(
         /obj/item/weapon/rcd = 10,
         /obj/item/weapon/storage/toolbox/syndicate = 10,
-        /obj/item/weapon/extinguisher = 10,
 
 		/obj/item/device/flashlight/upgraded = 20,
 		/obj/item/device/flashlight = 30,
 
-        /obj/item/clothing/mask/gas = 30,
         /obj/item/clothing/accessory/storage/brown_vest = 30,
         /obj/item/clothing/glasses/hud/standard/meson = 30,
         /obj/item/weapon/crowbar/brace_jack = 30,
+		/obj/item/weapon/extinguisher = 30,
 
 		/obj/item/weapon/rcd_ammo = 50,
+		/obj/item/weapon/tank/emergency/oxygen/double = 50,
+		/obj/item/clothing/mask/gas/clear = 50,
     )
 
 // 17x3, 32x2 = 115
@@ -106,6 +107,7 @@
 		/obj/item/weapon/gun/projectile/automatic/l6_saw = 5,
 		/obj/item/weapon/gun/projectile/revolver = 5,
 		/obj/item/weapon/gun/projectile/shotgun/pump/combat/auto = 5,
+		/obj/item/weapon/material/harpoon = 5,
 
         /obj/item/weapon/grenade/smokebomb = 10,
 		/obj/item/weapon/grenade/chem_grenade/teargas = 10,
@@ -119,6 +121,8 @@
         /obj/item/weapon/gun/projectile/automatic/wt550 = 20,
         /obj/item/weapon/gun/projectile/automatic/machine_pistol/mini_uzi = 20,
 		/obj/item/weapon/gun/energy/laser = 20,
+		/obj/item/weapon/material/sword/katana = 20,
+		/obj/item/weapon/material/hatchet/tacknife = 20,
 
 		/obj/item/device/flashlight/flare = 30,
 		/obj/item/device/flashlight/maglight = 30,
@@ -169,7 +173,4 @@
         /obj/item/clothing/suit/storage/civ_trench = 30,
         /obj/item/clothing/suit/storage/civ_trench/grey = 30,
         /obj/item/clothing/suit/storage/toggle/leathercoat = 30,
-
-		/obj/item/weapon/tank/emergency/oxygen/double = 50,
-		/obj/item/clothing/mask/gas/clear = 50,
     )
