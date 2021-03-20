@@ -15,13 +15,7 @@
 	sort_order = 1
 
 /datum/category_item/player_setup_item/occupation/load_character(savefile/S)
-	S["alternate_option"]  >> pref.alternate_option
-	S["job_high"]          >> pref.job_high
-	S["job_medium"]        >> pref.job_medium
-	S["job_low"]           >> pref.job_low
-	S["player_alt_titles"] >> pref.player_alt_titles
-	S["char_branch"]       >> pref.char_branch
-	S["char_rank"]         >> pref.char_rank
+	return
 
 /datum/category_item/player_setup_item/occupation/save_character(savefile/S)
 	S["alternate_option"]  << pref.alternate_option
