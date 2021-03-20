@@ -99,16 +99,7 @@
 
 
 /mob/living/carbon/human/slip_chance(prob_slip = 5)
-	if(!..())
-		return 0
-
-	//Check hands and mod slip
-	if(!l_hand)	prob_slip -= 2
-	else if(l_hand.w_class <= ITEM_SIZE_SMALL)	prob_slip -= 1
-	if (!r_hand)	prob_slip -= 2
-	else if(r_hand.w_class <= ITEM_SIZE_SMALL)	prob_slip -= 1
-
-	return prob_slip
+	return 0
 
 /mob/living/carbon/human/Check_Shoegrip()
 	if(species.species_flags & SPECIES_FLAG_NO_SLIP)

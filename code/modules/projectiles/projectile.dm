@@ -229,15 +229,11 @@
 		return 1
 
 	//hit messages
-	if(silenced)
-		to_chat(target_mob, "<span class='danger'>You've been hit in the [parse_zone(def_zone)] by \the [src]!</span>")
-	else
-		target_mob.visible_message("<span class='danger'>\The [target_mob] is hit by \the [src] in the [parse_zone(def_zone)]!</span>")//X has fired Y is now given by the guns so you cant tell who shot you if you could not see the shooter
-		new /obj/effect/effect/hitmarker(target_mob.loc)
-		for(var/mob/O in hearers(7, get_turf(target_mob)))
-			if(O.client)
-				if(O.get_preference_value(/datum/client_preference/play_hitmarker) == GLOB.PREF_YES)
-					O.playsound_local(target_mob, 'sound/weapons/hitmarker.ogg', 50, 1)
+	new /obj/effect/effect/hitmarker(target_mob.loc)
+	for(var/mob/O in hearers(7, get_turf(target_mob)))
+		if(O.client)
+			if(O.get_preference_value(/datum/client_preference/play_hitmarker) == GLOB.PREF_YES)
+				O.playsound_local(target_mob, 'sound/weapons/hitmarker.ogg', 50, 1)
 
 	//admin logs
 	if(!no_attack_log)

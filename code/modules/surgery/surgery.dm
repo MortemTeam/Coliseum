@@ -136,7 +136,7 @@
 				M.op_stage.in_progress += zone
 				S.begin_step(user, M, zone, src)		//start on it
 				//We had proper tools! (or RNG smiled.) and user did not move or change hands.
-				if(prob(S.success_chance(user, M, src, zone)) &&  do_mob(user, M, S.duration * SURGERY_DURATION_DELTA * surgery_speed))
+				if(do_mob(user, M, 1 SECONDS))
 					S.end_step(user, M, zone, src)		//finish successfully
 				else if ((src in user.contents) && user.Adjacent(M))			//or
 					S.fail_step(user, M, zone, src)		//malpractice~

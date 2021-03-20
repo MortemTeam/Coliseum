@@ -203,7 +203,6 @@
 			visible_message("<span class='notice'>\The [O] misses [src] narrowly!</span>")
 			return
 
-		src.visible_message("<span class='warning'>\The [src] has been hit by \the [O]</span>.")
 		var/armor = run_armor_check(null, "melee")
 		if(armor < 100)
 			var/damage_flags = O.damage_flags()
