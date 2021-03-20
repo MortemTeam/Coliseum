@@ -13,7 +13,7 @@
 	title = "Metviy Anarchist"
 	song = "sound/music/arena/KiSH-MertviyAnarchist.mp3"
 
-/lobby_music/arena/anarchist
+/lobby_music/arena/catastrofa
 	artist = "Pnevmoslon"
 	title = "Catastroficheskiy Pizdec"
 	song = "sound/music/arena/Pnevmoslon-Catastroficheskiy.mp3"
