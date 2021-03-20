@@ -14,10 +14,12 @@ datum/preferences
 
 /datum/category_item/player_setup_item/general/basic/load_character(savefile/S)
 	S["spawnpoint"] >> pref.spawnpoint
+	S["gender"]     >> pref.gender
 	S["team"]       >> pref.team
 
 /datum/category_item/player_setup_item/general/basic/save_character(savefile/S)
 	S["spawnpoint"]	<< pref.spawnpoint
+	S["gender"]     << pref.gender
 	S["team"]       << pref.team
 
 /datum/category_item/player_setup_item/general/basic/proc/sanitize_body()
