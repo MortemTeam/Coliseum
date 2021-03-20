@@ -45,7 +45,13 @@
 		if(speed > throw_speed || smash_check(throw_dist)) //not as reliable as smashing directly
 			if(reagents)
 				hit_atom.visible_message("<span class='notice'>The contents of \the [src] splash all over [hit_atom]!</span>")
-				reagents.splash(hit_atom, reagents.total_volume)
+				if(istype(hit_atom, /turf))
+					for(var/turf/T in view(1, src))
+						if(!T.density)
+							reagents.splash(T, reagents.total_volume)
+							break
+				else:
+					reagents.splash(hit_atom, reagents.total_volume)
 			src.smash(loc, hit_atom)
 
 /obj/item/weapon/reagent_containers/food/drinks/bottle/proc/smash_check(distance)
