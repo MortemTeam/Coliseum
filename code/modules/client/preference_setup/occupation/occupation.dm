@@ -34,7 +34,7 @@
 
 /datum/category_item/player_setup_item/occupation/sanitize_character()
 	if(!istype(pref.job_medium)) pref.job_medium = list()
-	if(!istype(pref.job_low))    pref.job_low = list()
+	if(!istype(pref.job_low))    pref.job_low = list("Gladiator")
 
 	pref.alternate_option	= sanitize_integer(pref.alternate_option, 0, 2, initial(pref.alternate_option))
 	pref.job_high	        = sanitize(pref.job_high, null)

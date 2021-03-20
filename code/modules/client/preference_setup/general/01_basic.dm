@@ -33,6 +33,8 @@ datum/preferences
 	pref.real_name          = sanitize_name(pref.real_name, pref.species)
 	if(!pref.real_name)
 		pref.real_name      = random_name(pref.gender, pref.species)
+	if(!pref.team)
+		pref.team           = "Gladiator"
 	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, spawntypes(), initial(pref.spawnpoint))
 
 /datum/category_item/player_setup_item/general/basic/content()
