@@ -114,7 +114,7 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 	blend_mode = BLEND_ADD
 
 	icon = 'icons/effects/fire.dmi'
-	icon_state = "1"
+	icon_state = "real_fire"
 	light_color = "#ed9200"
 	layer = FIRE_LAYER
 
@@ -132,14 +132,13 @@ turf/proc/hotspot_expose(exposed_temperature, exposed_volume, soh = 0)
 
 	var/datum/gas_mixture/air_contents = my_tile.return_air()
 
-	if(firelevel > 6)
-		icon_state = "3"
+	if(firelevel > 5)
+		icon_state = "real_fire"
 		set_light(7, 3)
 	else if(firelevel > 2.5)
-		icon_state = "2"
+		icon_state = "fire"
 		set_light(5, 2)
 	else
-		icon_state = "1"
 		set_light(3, 1)
 
 	for(var/mob/living/L in loc)

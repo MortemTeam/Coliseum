@@ -111,6 +111,7 @@
         /obj/item/weapon/grenade/smokebomb = 10,
 		/obj/item/weapon/grenade/chem_grenade/teargas = 10,
         /obj/item/weapon/grenade/frag/high_yield = 10,
+		/obj/item/weapon/grenade/barothermal = 10,
         /obj/item/weapon/grenade/flashbang = 10,
 
 		/obj/item/weapon/gun/projectile/revolver = 20,
