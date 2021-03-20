@@ -89,7 +89,7 @@
 
 	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment=1,/obj/item/projectile/bullet/pellet/fragment/strong=4)
 	num_fragments = 200  //total number of fragments produced by the grenade
-	explosion_size = 3
+	explosion_size = 1
 
 /obj/item/weapon/grenade/frag/high_yield/on_explosion(turf/O)
 	if(explosion_size)
