@@ -135,8 +135,6 @@
 				//We had proper tools! (or RNG smiled.) and user did not move or change hands.
 				if(do_mob(user, M, 1 SECONDS))
 					S.end_step(user, M, zone, src)		//finish successfully
-				else if ((src in user.contents) && user.Adjacent(M))			//or
-					S.fail_step(user, M, zone, src)		//malpractice~
 				else // This failing silently was a pain.
 					to_chat(user, "<span class='warning'>You must remain close to your patient to conduct surgery.</span>")
 				if (M)
