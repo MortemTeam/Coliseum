@@ -11,7 +11,7 @@
 /datum/event/supply_drop/setup()
 	var/list/areas = list()
 	for(var/area/A in world)
-		if(!(A.name in list("System Map", "Space"))
+		if(!(A.name in list("System Map", "Space")))
 			areas[A] = list()
 			for(var/turf/T in A)
 				areas[A].Add(T)
