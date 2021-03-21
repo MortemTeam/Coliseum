@@ -35,9 +35,8 @@
 	var/disabled = 0
 
 /obj/item/weapon/rcd/full_loaded
-	name = "upgraded rapid construction device"
-	max_stored_matter = 50
-	stored_matter = 50
+	name = "full loaded rapid construction device"
+	stored_matter = 30
 
 /obj/item/weapon/rcd/Initialize()
 	. = ..()

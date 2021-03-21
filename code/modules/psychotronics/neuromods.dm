@@ -26,6 +26,15 @@
 
 /* - SUPER POWERS - */
 
+/* -- INCREASE SPEED -- */
+/datum/neuromod/no_pain
+	name = "No Pain"
+	desc = "The neuromod makes you feel no pain"
+	chance = 5
+
+/datum/neuromod/no_pain/Handle(mob/living/carbon/human/user)
+	user.no_pain = 1
+
 /* -- LIGHT REGENERATION -- */
 /datum/neuromod/light_regeneration
 	name = "Light Regeneration"

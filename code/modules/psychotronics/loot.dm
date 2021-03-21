@@ -27,6 +27,7 @@
 		/datum/neuromod/light_regeneration,
 		/datum/neuromod/remoteview,
 		/datum/neuromod/increase_speed,
+		/datum/neuromod/no_pain,
 	))
 	created_for = /mob/living/carbon/human
 	. = ..()
