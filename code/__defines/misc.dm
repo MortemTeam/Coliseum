@@ -67,6 +67,7 @@
 #define EVENT_LEVEL_MUNDANE  1
 #define EVENT_LEVEL_MODERATE 2
 #define EVENT_LEVEL_MAJOR    3
+#define EVENT_LEVEL_ARENA    4
 
 //General-purpose life speed define for plants.
 #define HYDRO_SPEED_MULTIPLIER 1

@@ -8,7 +8,12 @@
 #define ASSIGNMENT_SCIENTIST "Scientist"
 #define ASSIGNMENT_SECURITY "Security"
 
-var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT_LEVEL_MODERATE = "Moderate", EVENT_LEVEL_MAJOR = "Major")
+var/global/list/severity_to_string = list(
+	EVENT_LEVEL_MUNDANE = "Mundane",
+	EVENT_LEVEL_MODERATE = "Moderate",
+	EVENT_LEVEL_MAJOR = "Major",
+	EVENT_LEVEL_ARENA = "Arena",
+)
 
 /datum/event_container
 	var/severity = -1
@@ -68,7 +73,6 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 
 	// Select an event and remove it from the pool of available events
 	var/picked_event = pickweight(possible_events)
-	available_events -= picked_event
 	return picked_event
 
 /datum/event_container/proc/get_weight(datum/event_meta/EM, list/active_with_role)
@@ -85,31 +89,7 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 	return weight
 
 /datum/event_container/proc/set_event_delay()
-	// If the next event time has not yet been set and we have a custom first time start
-	if(next_event_time == 0 && config.event_first_run[severity])
-		var/lower = config.event_first_run[severity]["lower"]
-		var/upper = config.event_first_run[severity]["upper"]
-		var/event_delay = rand(lower, upper)
-		next_event_time = world.time + event_delay
-	// Otherwise, follow the standard setup process
-	else
-		var/playercount_modifier = 1
-		switch(GLOB.player_list.len)
-			if(0 to 10)
-				playercount_modifier = 1.2
-			if(11 to 15)
-				playercount_modifier = 1.1
-			if(16 to 25)
-				playercount_modifier = 1
-			if(26 to 35)
-				playercount_modifier = 0.9
-			if(36 to 100000)
-				playercount_modifier = 0.8
-		playercount_modifier = playercount_modifier * delay_modifier
-
-		var/event_delay = rand(config.event_delay_lower[severity], config.event_delay_upper[severity]) * playercount_modifier
-		next_event_time = world.time + event_delay
-
+	next_event_time = world.time + 600
 	log_debug("Next event of severity [severity_to_string[severity]] in [(next_event_time - world.time)/600] minutes.")
 
 /datum/event_container/proc/SelectEvent()
@@ -185,6 +165,11 @@ var/global/list/severity_to_string = list(EVENT_LEVEL_MUNDANE = "Mundane", EVENT
 		new /datum/event_meta(EVENT_LEVEL_MAJOR, "Blob Outbreak", /datum/event/blob, 0, list(ASSIGNMENT_ANY = 1), is_one_shot = TRUE)
 	)
 
+/datum/event_container/arena
+	severity = EVENT_LEVEL_ARENA
+	available_events = list(
+		new /datum/event_meta(EVENT_LEVEL_ARENA, "Supply drop",	/datum/event/supply_drop,	100),
+	)
 
 #undef ASSIGNMENT_ANY
 #undef ASSIGNMENT_AI

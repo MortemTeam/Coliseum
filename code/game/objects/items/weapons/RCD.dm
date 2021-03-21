@@ -34,6 +34,11 @@
 	var/canRwall = 0
 	var/disabled = 0
 
+/obj/item/weapon/rcd/full_loaded
+	name = "upgraded rapid construction device"
+	max_stored_matter = 50
+	stored_matter = 50
+
 /obj/item/weapon/rcd/Initialize()
 	. = ..()
 

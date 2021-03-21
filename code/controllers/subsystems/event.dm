@@ -4,7 +4,7 @@ SUBSYSTEM_DEF(event)
 	priority = SS_PRIORITY_EVENT
 
 	var/tmp/list/processing_events = list()
-	var/tmp/pos = EVENT_LEVEL_MUNDANE
+	var/tmp/pos = EVENT_LEVEL_ARENA
 
 	//UI related
 	var/window_x = 700
@@ -32,7 +32,8 @@ SUBSYSTEM_DEF(event)
 		event_containers = list(
 				EVENT_LEVEL_MUNDANE 	= new /datum/event_container/mundane,
 				EVENT_LEVEL_MODERATE	= new /datum/event_container/moderate,
-				EVENT_LEVEL_MAJOR 		= new /datum/event_container/major
+				EVENT_LEVEL_MAJOR 		= new /datum/event_container/major,
+				EVENT_LEVEL_ARENA       = new /datum/event_container/arena,
 			)
 	if(GLOB.using_map.use_overmap)
 		overmap_event_handler.create_events(GLOB.using_map.overmap_z, GLOB.using_map.overmap_size, GLOB.using_map.overmap_event_areas)
@@ -47,7 +48,7 @@ SUBSYSTEM_DEF(event)
 /datum/controller/subsystem/event/fire(resumed = FALSE)
 	if (!resumed)
 		processing_events = active_events.Copy()
-		pos = EVENT_LEVEL_MUNDANE
+		pos = EVENT_LEVEL_ARENA
 
 	while (processing_events.len)
 		var/datum/event/E = processing_events[processing_events.len]
@@ -58,11 +59,11 @@ SUBSYSTEM_DEF(event)
 		if (MC_TICK_CHECK)
 			return
 
-	while (pos <= EVENT_LEVEL_MAJOR)
+	while (pos <= EVENT_LEVEL_ARENA)
 		var/list/datum/event_container/EC = event_containers[pos]
 		EC.process()
 		pos++
-		
+
 		if (MC_TICK_CHECK)
 			return
 
@@ -122,7 +123,7 @@ SUBSYSTEM_DEF(event)
 
 	return parts.len ? "<div class='panel stationborder'>[parts.Join("<br>")]</div>" : null
 
-//Event manager UI 
+//Event manager UI
 /datum/controller/subsystem/event/proc/GetInteractWindow()
 	var/html = "<A align='right' href='?src=\ref[src];refresh=1'>Refresh</A>"
 	html += "<A align='right' href='?src=\ref[src];pause_all=[!config.allow_random_events]'>Pause All - [config.allow_random_events ? "Pause" : "Resume"]</A>"
@@ -170,7 +171,7 @@ SUBSYSTEM_DEF(event)
 
 		html += "<table[table_options]>"
 		html += "<tr><td[row_options1]>Severity</td><td[row_options1]>Starts At</td><td[row_options1]>Starts In</td><td[row_options3]>Adjust Start</td><td[row_options1]>Pause</td><td[row_options1]>Interval Mod</td></tr>"
-		for(var/severity = EVENT_LEVEL_MUNDANE to EVENT_LEVEL_MAJOR)
+		for(var/severity = EVENT_LEVEL_MUNDANE to EVENT_LEVEL_ARENA)
 			var/datum/event_container/EC = event_containers[severity]
 			var/next_event_at = max(0, EC.next_event_time - world.time)
 			html += "<tr>"
@@ -197,7 +198,7 @@ SUBSYSTEM_DEF(event)
 		html += "<h2>Next Event</h2>"
 		html += "<table[table_options]>"
 		html += "<tr><td[row_options1]>Severity</td><td[row_options2]>Name</td><td[row_options3]>Event Rotation</td><td>Clear</td></tr>"
-		for(var/severity = EVENT_LEVEL_MUNDANE to EVENT_LEVEL_MAJOR)
+		for(var/severity = EVENT_LEVEL_MUNDANE to EVENT_LEVEL_ARENA)
 			var/datum/event_container/EC = event_containers[severity]
 			var/datum/event_meta/EM = EC.next_event
 			html += "<tr>"

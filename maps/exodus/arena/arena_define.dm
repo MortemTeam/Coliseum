@@ -5,8 +5,8 @@
 	path = "exodus/arena"
 
 	station_levels = list(1)
-	admin_levels = list()
-	contact_levels = list()
+	admin_levels = list(2)
+	contact_levels = list(1)
 	player_levels = list()
 	sealed_levels = list()
 	empty_levels = list()
