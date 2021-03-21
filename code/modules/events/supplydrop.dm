@@ -1,6 +1,7 @@
 /datum/event/supply_drop
 	var/available_items = list(
 		/obj/machinery/recharger = 5,
+		/obj/item/weapon/gun/launcher/rocket = 5,
 		/obj/item/weapon/rcd/full_loaded = 5,
 		/obj/item/weapon/rig/light = 5,
 		/obj/item/weapon/rig/combat = 5,

@@ -326,6 +326,8 @@
 		/obj/item/ammo_casing/shotgun/pellet,  //Shell
 		/obj/item/ammo_casing/shotgun/beanbag, //Beanbag
 		/obj/item/ammo_casing/shotgun/flash,   //Flash
+
+		/obj/item/ammo_casing/rocket,
 	)
 
 /decl/hierarchy/rcd_mode/arena/make_inflatable_door
