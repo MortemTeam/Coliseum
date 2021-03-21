@@ -20,7 +20,8 @@
 	var/turf/T = pick(A)
 	var/obj/item = pick(available_items)
 
-	command_announcement.Announce("Calling supply drop in [A] with [initial(item.name)].", "Your Master", zlevels = list(1))
+	command_announcement.Announce("Calling supply drop in [A] with [initial(item.name)]. Wait 10 seconds...", "Your Master", zlevels = list(1))
+	sleep(100)
 	var/datum/supply_drop_loot/SDL = new /datum/supply_drop_loot
 	SDL.contents = list(item)
 	new /datum/random_map/droppod/supply(null, T.x, T.y, T.z, supplied_drop = SDL)
