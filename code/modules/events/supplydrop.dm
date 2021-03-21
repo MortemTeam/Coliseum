@@ -11,10 +11,11 @@
 /datum/event/supply_drop/setup()
 	var/list/areas = list()
 	for(var/area/A in world)
-		if(!(A.name in list("System Map", "Space")))
-			areas[A] = list()
-			for(var/turf/T in A)
-				areas[A].Add(T)
+		if(findtext(A.name, "System Map") || findtext(A.name, "Space"))
+			continue
+		areas[A] = list()
+		for(var/turf/T in A)
+			areas[A].Add(T)
 
 	var/area/A = pick(areas)
 	var/turf/T = pick(A)
