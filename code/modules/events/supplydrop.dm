@@ -1,28 +1,22 @@
 /datum/event/supply_drop
 	var/available_items = list(
-		/obj/machinery/recharger = 5,
-		/obj/item/weapon/gun/launcher/rocket = 5,
-		/obj/item/weapon/rcd/full_loaded = 5,
-		/obj/item/weapon/rig/light = 5,
-		/obj/item/weapon/rig/combat = 5,
-		/obj/item/weapon/rig/security = 5,
+		list(/obj/machinery/recharger),
+		list(/obj/item/weapon/gun/launcher/rocket, /obj/item/ammo_casing/rocket),
+		list(/obj/item/weapon/rcd/full_loaded),
+		list(/obj/item/weapon/rig/light),
+		list(/obj/item/weapon/rig/combat),
+		list(/obj/item/weapon/rig/security),
 	)
 
 /datum/event/supply_drop/setup()
-	var/list/areas = list()
-	for(var/area/A in world)
-		if(findtext(A.name, "System Map") || findtext(A.name, "Space"))
-			continue
-		areas[A] = list()
-		for(var/turf/T in A)
-			areas[A].Add(T)
+	var/list/turfs = list()
+	for(var/turf/simulated/T in world)
+		turfs.Add(T)
 
-	var/area/A = pick(areas)
-	var/turf/T = pick(A)
-	var/obj/item = pick(available_items)
-
-	command_announcement.Announce("Calling supply drop in [A] with [initial(item.name)]. Wait 10 seconds...", "Your Master", zlevels = list(1))
+	var/turf/T = pick(turfs)
+	var/list/items = pick(available_items)
+	command_announcement.Announce("Calling supply drop in [T.loc]. Wait 10 seconds...", "Your Master", zlevels = list(1))
 	sleep(100)
 	var/datum/supply_drop_loot/SDL = new /datum/supply_drop_loot
-	SDL.contents = list(item)
+	SDL.contents = items
 	new /datum/random_map/droppod/supply(null, T.x, T.y, T.z, supplied_drop = SDL)
