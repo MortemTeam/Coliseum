@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(ticker)
 	flags = SS_NO_TICK_CHECK | SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
-	var/pregame_timeleft = 3 MINUTES
+	var/pregame_timeleft = 1 MINUTES
 	var/list/gamemode_vote_results  //Will be a list, in order of preference, of form list(config_tag = number of votes).
 	var/bypass_gamemode_vote = TRUE //Intended for use with admin tools. Will avoid voting and ignore any results.
 
